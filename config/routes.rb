@@ -1,4 +1,70 @@
 Rails.application.routes.draw do
+  get 'potential_pairings/index'
+
+  get 'potential_pairings/show'
+
+  get 'potential_pairings/new'
+
+  get 'potential_pairings/create'
+
+  get 'potential_pairings/edit'
+
+  get 'potential_pairings/update'
+
+  get 'potential_pairings/destroy'
+
+  get 'availabilities/new'
+
+  get 'availabilities/create'
+
+  get 'availabilities/edit'
+
+  get 'availabilities/update'
+
+  get 'availabilities/destroy'
+
+  get 'hours/new'
+
+  get 'hours/create'
+
+  get 'hours/edit'
+
+  get 'hours/update'
+
+  get 'hours/destroy'
+
+  get 'schedules/show'
+
+  get 'schedules/new'
+
+  get 'schedules/create'
+
+  get 'schedules/edit'
+
+  get 'schedules/update'
+
+  get 'schedules/destroy'
+
+  get 'topics/index'
+
+  get 'topics/show'
+
+  get 'topics/new'
+
+  get 'topics/create'
+
+  get 'topics/destroy'
+
+  get 'groups/create'
+
+  get 'groups/update'
+
+  get 'groups/destroy'
+
+  get 'groups/show'
+
+  get 'groups/new'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
