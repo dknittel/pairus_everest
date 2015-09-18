@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150918185021) do
+ActiveRecord::Schema.define(version: 20150918210952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 20150918185021) do
 
   add_index "hours", ["schedule_id"], name: "index_hours_on_schedule_id", using: :btree
 
+  create_table "potential_pairs", force: :cascade do |t|
+    t.boolean  "user1_accepted"
+    t.boolean  "user2_accepted"
+    t.integer  "user2_availability_id"
+    t.integer  "user1_availability_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
   create_table "schedules", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
@@ -66,6 +75,16 @@ ActiveRecord::Schema.define(version: 20150918185021) do
 
   add_index "user_groups", ["group_id"], name: "index_user_groups_on_group_id", using: :btree
   add_index "user_groups", ["user_id"], name: "index_user_groups_on_user_id", using: :btree
+
+  create_table "user_selected_topics", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_selected_topics", ["topic_id"], name: "index_user_selected_topics_on_topic_id", using: :btree
+  add_index "user_selected_topics", ["user_id"], name: "index_user_selected_topics_on_user_id", using: :btree
 
   create_table "user_topics", force: :cascade do |t|
     t.integer  "user_id"
@@ -119,6 +138,8 @@ ActiveRecord::Schema.define(version: 20150918185021) do
   add_foreign_key "topics", "groups"
   add_foreign_key "user_groups", "groups"
   add_foreign_key "user_groups", "users"
+  add_foreign_key "user_selected_topics", "topics"
+  add_foreign_key "user_selected_topics", "users"
   add_foreign_key "user_topics", "topics"
   add_foreign_key "user_topics", "users"
 end
