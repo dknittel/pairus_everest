@@ -1,0 +1,4 @@
+My Groups
+<% @groups.each do |group| %>
+	<a href="groups/<%= group.id %>"><%= group.name %></a>
+<% end %>
