@@ -3,8 +3,8 @@ class CreatePotentialPairs < ActiveRecord::Migration
     create_table :potential_pairs do |t|
       t.boolean :user1_accepted
       t.boolean :user2_accepted
-      t.references :user2_availability
-      t.references :user1_availability
+      t.integer :availability1_id
+      t.integer :availability2_id
 
       t.timestamps null: false
     end
