@@ -3,8 +3,10 @@ class CreatePotentialPairs < ActiveRecord::Migration
     create_table :potential_pairs do |t|
       t.boolean :user1_accepted
       t.boolean :user2_accepted
-      t.references :user2_availability
-      t.references :user1_availability
+      t.integer :availability, index: true, foreign_key: true
+      t.integer :availability2_id
+      t.references :topic, index: true, foreign_key: true
+      t.references :hour, index: true, foreign_key: true
 
       t.timestamps null: false
     end
