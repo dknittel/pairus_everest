@@ -18,9 +18,10 @@ ActiveRecord::Schema.define(version: 20150918210952) do
 
   create_table "availabilities", force: :cascade do |t|
     t.integer  "hour_id"
-    t.integer  "user_topic_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "user_selected_topic_id"
+    t.boolean  "taken"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "availabilities", ["hour_id"], name: "index_availabilities_on_hour_id", using: :btree
@@ -33,29 +34,22 @@ ActiveRecord::Schema.define(version: 20150918210952) do
   end
 
   create_table "hours", force: :cascade do |t|
-    t.integer  "schedule_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "hours", ["schedule_id"], name: "index_hours_on_schedule_id", using: :btree
-
-  create_table "potential_pairs", force: :cascade do |t|
-    t.boolean  "user1_accepted"
-    t.boolean  "user2_accepted"
-    t.integer  "user2_availability_id"
-    t.integer  "user1_availability_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-  end
-
-  create_table "schedules", force: :cascade do |t|
     t.integer  "user_id"
+    t.datetime "start"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "schedules", ["user_id"], name: "index_schedules_on_user_id", using: :btree
+  add_index "hours", ["user_id"], name: "index_hours_on_user_id", using: :btree
+
+  create_table "potential_pairs", force: :cascade do |t|
+    t.boolean  "user1_accepted"
+    t.boolean  "user2_accepted"
+    t.integer  "availability1_id"
+    t.integer  "availability2_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "topics", force: :cascade do |t|
     t.string   "title"
@@ -85,16 +79,6 @@ ActiveRecord::Schema.define(version: 20150918210952) do
 
   add_index "user_selected_topics", ["topic_id"], name: "index_user_selected_topics_on_topic_id", using: :btree
   add_index "user_selected_topics", ["user_id"], name: "index_user_selected_topics_on_user_id", using: :btree
-
-  create_table "user_topics", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "topic_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "user_topics", ["topic_id"], name: "index_user_topics_on_topic_id", using: :btree
-  add_index "user_topics", ["user_id"], name: "index_user_topics_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -133,13 +117,10 @@ ActiveRecord::Schema.define(version: 20150918210952) do
   add_index "views", ["reset_password_token"], name: "index_views_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "availabilities", "hours"
-  add_foreign_key "hours", "schedules"
-  add_foreign_key "schedules", "users"
+  add_foreign_key "hours", "users"
   add_foreign_key "topics", "groups"
   add_foreign_key "user_groups", "groups"
   add_foreign_key "user_groups", "users"
   add_foreign_key "user_selected_topics", "topics"
   add_foreign_key "user_selected_topics", "users"
-  add_foreign_key "user_topics", "topics"
-  add_foreign_key "user_topics", "users"
 end
