@@ -14,10 +14,7 @@
 
 # Ignore Gemfile.lock
 Gemfile.lock
-<<<<<<< HEAD
+
 
 # Ignore schema.rb
-db/schema.rb
-=======
 /db/schema.rb
->>>>>>> master
