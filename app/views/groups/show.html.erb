@@ -1,0 +1,17 @@
+<%= @group.name %>
+</br>
+</br>
+<div>
+<%= form_tag(controller: "user_selected_topics", action: "create", method: "post") %>
+	<%# link_to 'Find Partner', group_potential_pair_path(@group, @topic) %>
+	<% @topics.each do |topic| %>
+	<!-- we need to get the topic sent as a parameter -->
+		<%= check_box_tag(:topic) %><%= label_tag(topic.title) %><br>
+	<% end %>
+	<br>
+<input type="submit" name="submit" value="Select Topics" %>
+</div>
+	<div>
+		<br>
+		<%= link_to "Add New Topic", new_group_topic_path(@group.id) %>
+	</div>
