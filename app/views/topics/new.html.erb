@@ -1,2 +1,13 @@
-<h1>Topics#new</h1>
-<p>Find me in app/views/topics/new.html.erb</p>
+What topic(s) is/are your group interested?
+
+<%= form_for [@group, @topic] do |f|%>
+
+  <div>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %> 
+  </div>
+
+  <div>
+    <%= f.submit "Create Topic" %>
+  </div>
+<% end %>
