@@ -1,5 +1,6 @@
 class AvailabilitiesController < ApplicationController
   before_action :authenticate_user!
+
   def new
   end
 
@@ -10,8 +11,10 @@ class AvailabilitiesController < ApplicationController
     user_groups.each do |user_group|
       @users << User.find(user_group.user_id)
     end
+
     current_user_selected_topics = UserSelectedTopic.where(user_id: current_user.id)
     current_user_availabilities = []
+
     current_user_selected_topics.each do |cust|
       cust.availabilities.each do |avail|
         current_user_availabilities << avail
@@ -29,19 +32,22 @@ class AvailabilitiesController < ApplicationController
         end
       end
     end
+
     availabilities = []
     usts.each do |ust_array|
       ust_array.each do |ust|
         availabilities << Availability.where(user_selected_topic_id: ust.id)
       end
     end
+    
+
     @possible_availability_matches = []
     availabilities.each do |avail|
-        current_user_availabilities.each do |current_avail|
-          if avail.hour_id == current_avail.hour_id
-            @possible_availability_matches << avail
-          end
+      current_user_availabilities.each do |current_avail|
+        if avail.hour_id == current_avail.hour_id
+          @possible_availability_matches << avail
         end
+      end
     end
   end
 
@@ -56,4 +62,5 @@ class AvailabilitiesController < ApplicationController
 
   def destroy
   end
+
 end
