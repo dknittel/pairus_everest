@@ -50,11 +50,12 @@ class AvailabilitiesControllerTest < ActionController::TestCase
         # act
         # assert
         expect {
-         post "/availabilities", taken: false
-          }.to change { Availability.count }
+          post "/availabilities", taken: false
+        }.to change { Availability.count }
       end
+    end
 
-      describe "POST /availabilities" do
+    describe "POST /availabilities" do
       it "not create new availability" do
         Availability.delete_all
 
@@ -89,4 +90,5 @@ class AvailabilitiesControllerTest < ActionController::TestCase
       it "pending further information" do
       end
     end
+  end
 end
