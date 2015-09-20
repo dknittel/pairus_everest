@@ -31,12 +31,13 @@ class UserSelectedTopicsController < ApplicationController
     @user_selected_topic4 = UserSelectedTopic.create(params[:title4])
     @user_selected_topic5 = UserSelectedTopic.create(params[:title5])
 
-    # after all records are save this should render all selected topics
+    # after all records are saved this should render all selected topics
 
   end
 
 private topic_params
   params.require(:group).permit(:title, :title2, :title3, :title4, :title5 )
+end
 
 end
 
