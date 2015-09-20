@@ -35,11 +35,13 @@ class UserSelectedTopicsController < ApplicationController
 
   end
 
-private topic_params
-  params.require(:group).permit(:title, :title2, :title3, :title4, :title5 )
+  private
+
+    def topic_params
+      params.require(:group).permit(:title, :title2, :title3, :title4, :title5 )
+    end
 end
 
-end
 
 
 class TopicsController < ApplicationController
@@ -51,8 +53,9 @@ class TopicsController < ApplicationController
     # this should send back all topics with newly created topic
   end
 
-private topic_params
-  params.require(:group).permit(:title)
-end
+  private
 
+    def topic_params
+      params.require(:group).permit(:title)
+    end
 end
