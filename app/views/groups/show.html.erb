@@ -1,11 +1,15 @@
 <%= @group.name %>
 </br>
-<%= f.submit "Add Topic" %>
+<%= link_to "Add Topic", new_group_topic_path(@group) %>
 </br>
-<%= form_for [@group, @topic] do |f| %>
-	<%= link_to 'Find Partner', group_potential_pair_path(@group, @topic) %>
+<%= form_for [@group] do |f| %>
+	<%= link_to 'Find Partner', group_availabilities_path(@group) %>
+	</br>
+	Topics:
+	</br>
 	<% @topics.each do |topic| %>
 		<button>Select</button>
 		<%= topic.title %>
+	</br>
 	<% end %>
 <% end %>

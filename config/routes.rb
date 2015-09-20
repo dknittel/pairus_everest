@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :groups do
     resources :topics 
-    resources :potential_pairs
+    resources :availabilities
   end
 
   # Example of regular route:
