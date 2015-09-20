@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   resources :groups do
-    resources :topics
+    resources :topics 
+    resources :availabilities
     resources :potential_pairs
   end
 

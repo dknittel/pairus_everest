@@ -1,0 +1,9 @@
+<% @possible_availability_matches.each do |avail| %>
+	<%= form_for @availability do |f| %>
+		<%= user_helper(avail) %>
+		<%= hour_helper(avail).day %>
+		<%= hour_helper(avail).hour %>
+		<%= topic_helper(avail) %>
+		<%= f.submit "Select Pair", new_group_potential_pair_path(@group) %>
+	<% end %>
+<% end %>

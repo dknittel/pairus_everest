@@ -6,10 +6,10 @@
 	<%# link_to 'Find Partner', group_potential_pair_path(@group, @topic) %>
 	<% @topics.each do |topic| %>
 	<!-- we need to get the topic sent as a parameter -->
+
 	<input type="checkbox" name="topic[<%= topic.id %>]" value=<%= topic.id %>> <%= topic.title %><br>
 	<% end %>
 	<br>
-<input type="submit" name="submit" value="Select Topics" %>
 </div>
 	<div>
 		<br>
