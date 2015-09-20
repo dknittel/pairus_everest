@@ -12,5 +12,9 @@
 !/log/.keep
 /tmp
 
-# Add Gemfile.lock
+# Ignore Gemfile.lock
 Gemfile.lock
+
+
+# Ignore schema.rb
+/db/schema.rb

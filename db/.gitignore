@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 schema.rb
+=======
+db/schema.rb
+>>>>>>> f14d01b6c8501193e3f73bb1762481152715ba3a

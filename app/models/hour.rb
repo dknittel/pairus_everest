@@ -1,3 +1,5 @@
 class Hour < ActiveRecord::Base
-  belongs_to :schedule
+  belongs_to :user
+  has_many :availabilities
+
 end
