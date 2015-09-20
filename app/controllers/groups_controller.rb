@@ -31,7 +31,9 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @topics = Topic.where(group_id: @group.id)
+    @topics = @group.topics
+    p @group
+    p '=' * 80
     p @topics
     p '*' * 100
   end
