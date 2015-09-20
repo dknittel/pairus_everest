@@ -55,39 +55,40 @@ class AvailabilitiesControllerTest < ActionController::TestCase
       end
     end
 
-      describe "POST /availabilities" do
-        it "not create new availability" do
-          Availability.delete_all
+    describe "POST /availabilities" do
+      it "not create new availability" do
+        Availability.delete_all
 
-          post '/availabilities'
+        post '/availabilities'
 
-          expect {
-            post "/availabilities", taken: false
-          }.not_to change { Availability.count }
-        end
-      end
-
-      describe "UPDATE /availabilities/:id" do
-        it "renders a successful status" do
-          # arrange
-          # act
-          update "/availabilities/#{@availability.id}"
-          # assert
-          expect(last_response.status).to eq(200)
-        end
-
-        it "updates individual availability record" do
-          # arrange
-          @availability = Availability.update(taken: true)
-          # act
-          update "/availabilities/#{@availability.id}"
-          # assert
-          expect(last_response.body).to include("true")
-        end
-      end
-
-      describe "selecting user_selected_topics changes number of availabilities" do
-        it "pending further information" do
-        end
+        expect {
+          post "/availabilities", taken: false
+        }.not_to change { Availability.count }
       end
     end
+
+    describe "UPDATE /availabilities/:id" do
+      it "renders a successful status" do
+        # arrange
+        # act
+        update "/availabilities/#{@availability.id}"
+        # assert
+        expect(last_response.status).to eq(200)
+      end
+
+      it "updates individual availability record" do
+        # arrange
+        @availability = Availability.update(taken: true)
+        # act
+        update "/availabilities/#{@availability.id}"
+        # assert
+        expect(last_response.body).to include("true")
+      end
+    end
+
+    describe "selecting user_selected_topics changes number of availabilities" do
+      it "pending further information" do
+      end
+    end
+  end
+end
