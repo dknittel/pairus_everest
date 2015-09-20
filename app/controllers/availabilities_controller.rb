@@ -11,14 +11,14 @@ class AvailabilitiesController < ApplicationController
       @users << User.find(user_group.user_id)
     end
     current_user_selected_topics = UserSelectedTopic.where(user_id: current_user.id)
-    current_user_topics = []
-    current_user_selected_topics.each do |cust|
-      current_user_topics << Topic.find(cust.topic_id)
-    end
+    # current_user_topics = []
+    # current_user_selected_topics.each do |cust|
+    #   current_user_topics << Topic.find(cust.topic_id)
+    # end
     usts = []
     @users.each do |user|
-      current_user_topics.each do |cust|
-        if UserSelectedTopic.where(user_id: user.id).topic_id == cust.id
+      current_user_selected_topics.each do |cust|
+        if UserSelectedTopic.where(user_id: user.id).topic_id == cust.topic_id
           usts << UserSelectedTopic.where(user_id: user.id)
         end
       end
@@ -31,7 +31,10 @@ class AvailabilitiesController < ApplicationController
     end
     possible_availability_matches = []
     @availabilities.each do |avail|
+      
+        if avail.hour_id == 
 
+        end
     end
   end
 

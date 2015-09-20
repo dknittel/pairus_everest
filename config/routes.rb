@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
 
+  get 'user_selected_topics/create'
+
   get 'pages/home'
   get 'groups/:group_id/invites' => 'groups#invites'
+  post 'user_selected_topics/create' => 'user_selected_topics#create'
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
