@@ -1,29 +1,67 @@
 require 'test_helper'
 
 class TopicsControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
-    assert_response :success
-  end
+  describe "topics_controller" do
+    describe "GET /topics" do
+      it "renders a successful status" do
+        # arrange
+        # act
+        get '/topics'
+        # assert
+        expect(last_response.status).to eq(200)
+      end
 
-  test "should get show" do
-    get :show
-    assert_response :success
-  end
+      it "renders list of topics" do
+        # arrange
+        Topic.create(title: "ReactJS")
+        # act
+        get '/topics'
+        # assert
+        expect(last_response.body).to include("ReactJS")
+      end
+    end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
+    describe "GET /topics/:id" do
+      describe "if the topic exists" do
+        it "renders a successful status" do
+          # arrange
+          @topic = Topic.create(title: "ReactJS")
+          # act
+          get "/topics/#{@topic.id}"
+          # assert
+          expect(last_response.status).to eq(200)
+        end
 
-  test "should get create" do
-    get :create
-    assert_response :success
-  end
+        it "renders individual of topic" do
+          # arrange
+          @topic = Topic.create(title: "ReactJS")
+          # act
+          get "/topics/#{@topic.id}"
+          # assert
+        expect(last_response.body).to include("ReactJS")
+        end
+      end
+    end
 
-  test "should get destroy" do
-    get :destroy
-    assert_response :success
-  end
+    describe "POST /topics" do
+      it "create a new topic" do
+        Topic.delete_all
 
+        @topic = Topic.create(title: "ReactJS")
+
+        expect {
+          post "/topics", title: "ReactJS."
+        }.to change { Topic.count }
+      end
+    end
+
+    describe "DELETE /topics/delete" do
+      it "create a new topic" do
+        @topic = Topic.create(title: "Goodbye")
+
+        expect {
+          delete "/topics/delete", title: "ReactJS."
+        }.to change { Topic.count }
+      end
+    end
 end
