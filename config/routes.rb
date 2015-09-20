@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :groups do
     resources :topics 
     resources :availabilities
+    resources :potential_pairs
   end
 
   # Example of regular route:
