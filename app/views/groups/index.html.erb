@@ -1,0 +1,10 @@
+My Groups
+</br>
+<% if @groups %>
+	<% @groups.each do |group| %>
+		<a href="groups/<%= group.id %>/topics"><%= group.name %></a>
+	</br>
+	<% end %>
+	<% end %>
+
+<%= link_to 'Create New Group', new_group_path %>

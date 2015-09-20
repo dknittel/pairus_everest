@@ -1,29 +1,88 @@
 require 'test_helper'
 
 class HoursControllerTest < ActionController::TestCase
-  test "should get new" do
-    get :new
-    assert_response :success
+
+describe "hours_controller" do
+  describe "GET /hours" do
+    it "renders a successful status" do
+      # arrange
+      # act
+      get '/hours'
+      # assert
+      expect(last_response.status).to eq(200)
+    end
+
+    it "renders list of hours in schedule" do
+      # arrange
+      Hour.create(start: Time.now)
+      # act
+      get '/hours'
+      # assert
+      expect(last_response.body.created_at.utc.to_s).to be_within(1.second).of Time.now
+    end
   end
 
-  test "should get create" do
-    get :create
-    assert_response :success
+  describe "GET /hours/:id" do
+    describe "if the hour exists" do
+      it "renders a successful status" do
+        # arrange
+        @hour = Hour.create(start: Time.now)
+        # act
+        get "/hours/#{@hour.id}"
+        # assert
+        expect(last_response.status).to eq(200)
+      end
+    end
+
   end
 
-  test "should get edit" do
-    get :edit
-    assert_response :success
+  describe "POST /hours" do
+    it "renders a successful status" do
+      # arrange
+      Hour.create(start: Time.now)
+      # act
+      post "/hours"
+      # assert
+      expect(last_response.status).to eq(200)
+    end
+
+    it "increases the number of available hours" do
+      # arrange
+      Hour.create(start: Time.now)
+      # act
+      post '/hours'
+      # assert
+      expect {
+       post "/hours", start: Time.now
+        }.to change { Hour.count }
+    end
+
+  describe "POST /hours" do
+    it "create a new available hour" do
+      Hour.delete_all
+
+      expect {
+        post "/hours", start: Time.now
+      }.to change { Hour.count }
+    end
   end
 
-  test "should get update" do
-    get :update
-    assert_response :success
-  end
+  describe "UPDATE /hours/:id" do
+    it "renders a successful status" do
+      # arrange
+      # act
+      update "/hours/#{@hour.id}"
+      # assert
+      expect(last_response.status).to eq(200)
+    end
 
-  test "should get destroy" do
-    get :destroy
-    assert_response :success
+    it "updates individual hour record" do
+      # arrange
+      Hour.update(start: Time.now)
+      # act
+      update "/hours/#{@hour.id}"
+      # assert
+      expect(last_response.body.updated_at.utc.to_s).to be_within(1.second).of Time.now
+    end
   end
-
 end

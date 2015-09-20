@@ -14,4 +14,7 @@
 
 # Ignore Gemfile.lock
 Gemfile.lock
+
+
+# Ignore schema.rb
 /db/schema.rb
