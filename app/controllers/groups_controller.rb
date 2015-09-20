@@ -12,8 +12,6 @@ class GroupsController < ApplicationController
   end
 
   def invites
-    p '*' * 100
-    p params
     @group = Group.find(params[:group_id])
   end
 
@@ -34,6 +32,8 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @topics = Topic.where(group_id: @group.id)
+    p @topics
+    p '*' * 100
   end
 
   def new

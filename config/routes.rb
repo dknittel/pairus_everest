@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   resources :groups do
-    resources :topics
+    resources :topics 
+    resources :potential_pairs
   end
 
   # Example of regular route:
