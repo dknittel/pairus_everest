@@ -5,10 +5,16 @@ class GroupsController < ApplicationController
     group.admin_id = current_user.id
     current_user.user_groups.create(group: group, user: current_user)
     if group.save
-      redirect_to groups_path
+      redirect_to new_group_topic_path(group)
     else
       render :new
     end
+  end
+
+  def invites
+    p '*' * 100
+    p params
+    @group = Group.find(params[:group_id])
   end
 
   def update

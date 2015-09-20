@@ -1,0 +1,8 @@
+<%= @group.name %>
+</br>
+<%= link_to "Add Topic", new_group_topic_path(@group) %>
+
+<% @topics.each do |topic| %>
+	<button>Select</button>
+	<%= topic.title %>
+<% end %>
