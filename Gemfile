@@ -27,6 +27,12 @@ gem 'devise'
 # Add Bootstrap
 gem 'bootstrap-sass', '~> 3.3.5.1'
 
+# Add dotenv for secrets
+gem 'dotenv', '~> 2.0.2'
+
+# Shortening
+gem 'googl', '~> 0.7.1'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
