@@ -56,6 +56,8 @@ class AvailabilitiesController < ApplicationController
         end
       end
     end
+    @possible_availability_matches
+    render :index
   end
 
   def create

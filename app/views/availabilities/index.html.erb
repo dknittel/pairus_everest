@@ -1,10 +1,10 @@
 <% @possible_availability_matches.each do |avail| %>
-	<%= form_for :availability, :url => group_potential_pairs_path(@group, :user => user_helper(avail).id, :time => hour_helper(avail)), :html => { :method => :post } do |f| %>
-		Username: <%= user_helper(avail).handle %>
-		Day: <%= hour_helper(avail)[:day] %>
-		Hour: <%= hour_helper(avail)[:hour] %>
-		Topic: <%= topic_helper(avail).title %>
-		<%= f.submit "Select Pair" %>
+		Username: <% user_helper(avail).handle %>
+		Day: <% hour_helper(avail)[:day] %>
+		Hour: <% hour_helper(avail)[:hour] %>
+		Topic: <% topic_helper(avail).title %>
 	<% end %>
-<% end %>
 <!-- , group_potential_pairs_path(@group) -->
+<%= @possible_availability_matches.each do |avail| %>
+<p><%= avail %></p>
+<% end %>

@@ -4,9 +4,6 @@ class HoursController < ApplicationController
   end
 
   def create
-<<<<<<< HEAD
-    p params
-=======
     hours = []
 
     7.times do |num|
@@ -30,7 +27,6 @@ class HoursController < ApplicationController
 
     # hours.each do |hour|
     # end
->>>>>>> d1437565f6b28c50ae5b568427bea2e2a04ae0b0
   end
 
   def edit
