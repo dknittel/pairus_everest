@@ -56,6 +56,7 @@ class AvailabilitiesController < ApplicationController
         end
       end
     end
+    @current_user = current_user
   end
 
   def create

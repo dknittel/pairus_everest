@@ -11,7 +11,9 @@ class UserSelectedTopicsController < ApplicationController
     
     user.user_selected_topics.each do |ust|
       user.hours.each do |hour|
-        Availability.create(user_selected_topic_id: ust.id, hour_id: hour.id)
+        if !Availability.exists?(user_selected_topic_id: ust.id, hour_id: hour.id)
+          Availability.create(user_selected_topic_id: ust.id, hour_id: hour.id)
+        end
       end
     end
 
