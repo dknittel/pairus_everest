@@ -1,7 +1,7 @@
 require 'test_helper'
 
-class PotentialPairingsControllerTest < ActionController::TestCase
-describe "potential_pairings_controller" do
+class PotentialPairsControllerTest < ActionController::TestCase
+describe "potential_pairs_controller" do
   describe "GET /potential_pairs" do
     it "renders a successful status" do
       # arrange
