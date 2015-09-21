@@ -7,7 +7,7 @@ class PagesController < ApplicationController
         group = Group.find(group_id)
         group.users << current_user
       end
-  		redirect_to new_group_path
+  		redirect_to groups_path
   	end
   end
 end
