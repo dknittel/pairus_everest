@@ -40,9 +40,9 @@ class AvailabilitiesController < ApplicationController
 
     availabilities = []
     usts.each do |ust|
-        ust.availabilities.each do |avail|
-          availabilities << avail
-        end
+      ust.availabilities.each do |avail|
+        availabilities << avail
+      end
     end
     p "*" * 80
     p availabilities
@@ -52,18 +52,22 @@ class AvailabilitiesController < ApplicationController
     @possible_availability_matches = []
     availabilities.each do |avail|
       current_user_availabilities.each do |current_avail|
-        pp = nil
-        if avail.hour_id == current_avail.hour_id
+        if Hour.find(avail.hour_id).day == Hour.find(current_avail.hour_id).day && Hour.find(avail.hour_id).hr == Hour.find(current_avail.hour_id).hr
           # find PotentialPair for the current_avail && avail check to see if accped is false for either user.
           if(PotentialPair.exists?(availability1_id: current_avail.id, availability2_id: avail.id))
-            pp = PotentialPair.where(availability1_id: current_avail.id, availability2_id: avail.id)
-          else
+            pp = PotentialPair.find_by(availability1_id: current_avail.id, availability2_id: avail.id)
+          elsif
             (PotentialPair.exists?(availability1_id: avail.id, availability2_id: current_avail.id))
-              pp = PotentialPair.where(availability1_id: avail.id, availability2_id: current_avail.id)
+            pp = PotentialPair.find_by(availability1_id: avail.id, availability2_id: current_avail.id)
+          else
+            pp = nil
           end
-
-          unless pp.user1_accepted == false || pp.user2_accepted == false || pp != nil
-          @possible_availability_matches << avail
+          if pp == nil
+            @possible_availability_matches << avail
+          else
+            if pp.user1_accepted != false && pp.user2_accepted != false
+              @possible_availability_matches << avail
+            end
           end
 
         end

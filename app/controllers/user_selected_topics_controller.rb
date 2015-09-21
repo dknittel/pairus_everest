@@ -8,12 +8,23 @@ class UserSelectedTopicsController < ApplicationController
     topics.each do |topic|
       user.user_selected_topics << UserSelectedTopic.create(user_id: user.id, topic_id: topic)
     end
+
+    user.user_selected_topics.each do |ust|
+      ust.availabilities.each do |avail|
+        # avail.each do |a|
+        avail.destroy
+        p '*' * 100
+        p avail
+        # end
+        # avail.destroy
+      end
+    end
     
     user.user_selected_topics.each do |ust|
       user.hours.each do |hour|
-        if !Availability.exists?(user_selected_topic_id: ust.id, hour_id: hour.id)
+        # if !Availability.exists?(user_selected_topic_id: ust.id, hour_id: hour.id)
           Availability.create(user_selected_topic_id: ust.id, hour_id: hour.id)
-        end
+        # end
       end
     end
 

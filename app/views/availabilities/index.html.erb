@@ -1,16 +1,33 @@
 <% @possible_availability_matches.each do |avail| %>
-	<% pp = PotentialPair.find_by(availability1_id: avail.id, availability2_id: Availability.find_by(UserSelectedTopic.find_by(user_id: @current_user.id, topic_id: ), hour_id: )) %>
-	<% pp = PotentialPair.find_by(availability2_id: avail.id, availability1_id: ) %>
-	<% unless pp.user1_accepted == false || pp.user2_accepted == false %>
+	<% #ust = UserSelectedTopic.find(avail.user_selected_topic_id) %>
+	<% #hour = Hour.find(avail.hour_id)) %>
+	<% #if PotentialPair.exists?(availability1_id: avail.id, availability2_id: Availability.find_by(user_selected_topic_id: UserSelectedTopic.find_by(user_id: @current_user.id, topic_id: ust.topic_id).id, hour_id: hour.id)) %>
+	<% #pp = PotentialPair.find_by(availability1_id: avail.id, availability2_id: Availability.find_by(user_selected_topic_id: UserSelectedTopic.find_by(user_id: @current_user.id, topic_id: ust.topic_id).id, hour_id: hour.id)) %>
+	<% #pp = PotentialPair.find_by(availability2_id: avail.id, availability1_id: Availability.find_by(user_selected_topic_id: UserSelectedTopic.find_by(user_id: @current_user.id, topic_id: ust.topic_id).id, hour_id: hour.id)) %>
+	<% #unless pp.user1_accepted == false || pp.user2_accepted == false %>
+	<table>
+		<tr>
+			<td>
+
 		Username: <%= user_helper(avail).handle %>
 		Day: <%= hour_helper(avail)[:day] %>
 		Hour: <%= hour_helper(avail)[:hour] %>
 		Topic: <%= topic_helper(avail).title %>
+		&nbsp;
+			</td>
+
+			<td>
 		<%= form_for :availability, :url => group_potential_pairs_path(@group, :user_id => user_helper(avail).id, :time => hour_helper(avail), :avail => avail.id, :accepted => 'true'), :html => { :method => :post } do |f| %>
 		<%= f.submit "Select Pair" %>
 		<% end %>
+			</td>
+			<td>
 		<%= form_for :availability, :url => group_potential_pairs_path(@group,  :user_id => user_helper(avail).id, :time => hour_helper(avail), :avail => avail.id, :accepted => 'false'), :html => { :method => :post } do |f| %>
 		<%= f.submit "Skip" %>
 		<% end %>
-	<% end %>
+			</td>
+		</tr>
+
+	<% #end %>
 <% end %>
+</table>

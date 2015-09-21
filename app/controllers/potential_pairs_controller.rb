@@ -18,13 +18,20 @@ class PotentialPairsController < ApplicationController
     # if PotentialPair exist with same topic, hour, and both users
     # then do not create but update
     # else if PotentialPair doesn't exist create one
-    current_avail = Availability.find_by(user_selected_topic_id: UserSelectedTopic.find_by(user_id: current_user.id), hour_id: Hour.find_by(hr: params[:time][:hour]))
-    # User.find()
+    a = Availability.find(params[:avail])
+    ust = UserSelectedTopic.find(a.user_selected_topic_id)
+    topic = Topic.find(ust.topic_id)
+    current_avail = Availability.find_by(user_selected_topic_id: UserSelectedTopic.find_by(user_id: current_user.id, topic_id: topic.id).id, hour_id: Hour.find_by(hr: params[:time][:hour], user_id: current_user.id).id)
+    p 'O' * 100
+    p params[:time][:hour]
+    p Hour.find_by(hr: params[:time][:hour]).id
+    p UserSelectedTopic.find_by(user_id: current_user.id, topic_id: topic.id).id
     pair_user = User.find(params[:user_id])
     group = Group.find(params[:group_id])
-    p '*' * 100
+    p current_avail
+    p 'O' * 100
+    p params[:time][:hour]
     p current_avail.id
-    p params
     if !(PotentialPair.exists?(availability1_id: current_avail.id, availability2_id: params[:avail]))
       if params[:accepted]
         PotentialPair.create(availability1_id: current_avail.id, availability2_id: params[:avail], user1_accepted: true, user2_accepted: nil)
