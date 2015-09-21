@@ -9,7 +9,9 @@ class AvailabilitiesController < ApplicationController
     user_groups = UserGroup.where(group_id: @group.id)
     @users = []
     user_groups.each do |user_group|
-      @users << User.find(user_group.user_id)
+      if user_group.user_id != current_user.id
+        @users << User.find(user_group.user_id)
+      end
     end
 
     current_user_selected_topics = UserSelectedTopic.where(user_id: current_user.id)
@@ -37,7 +39,9 @@ class AvailabilitiesController < ApplicationController
 
     availabilities = []
     usts.each do |ust|
-        availabilities << Availability.where(user_selected_topic_id: ust.id)
+        ust.availabilities.each do |avail|
+          availabilities << avail
+        end
     end
     p "*" * 80
     p availabilities
