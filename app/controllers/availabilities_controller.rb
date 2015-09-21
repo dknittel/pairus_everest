@@ -5,6 +5,7 @@ class AvailabilitiesController < ApplicationController
   end
 
   def index
+
     @group = Group.find(params[:group_id])
     user_groups = UserGroup.where(group_id: @group.id)
     @users = []
@@ -51,12 +52,25 @@ class AvailabilitiesController < ApplicationController
     @possible_availability_matches = []
     availabilities.each do |avail|
       current_user_availabilities.each do |current_avail|
+        pp = nil
         if avail.hour_id == current_avail.hour_id
+          # find PotentialPair for the current_avail && avail check to see if accped is false for either user.
+          if(PotentialPair.exists?(availability1_id: current_avail.id, availability2_id: avail.id))
+            pp = PotentialPair.where(availability1_id: current_avail.id, availability2_id: avail.id)
+          else
+            (PotentialPair.exists?(availability1_id: avail.id, availability2_id: current_avail.id))
+              pp = PotentialPair.where(availability1_id: avail.id, availability2_id: current_avail.id)
+          end
+
+          unless pp.user1_accepted == false || pp.user2_accepted == false || pp != nil
           @possible_availability_matches << avail
+          end
+
         end
       end
     end
     @current_user = current_user
+
   end
 
   def create
