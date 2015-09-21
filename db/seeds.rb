@@ -11,12 +11,14 @@ topic = group.topics.create(title: 't')
 ust = UserSelectedTopic.create(user_id: '1', topic_id: '1')
 ust2 = UserSelectedTopic.create(user_id: '2', topic_id: '1')
 
-hour = Hour.create(hr: 1, day: 1)
+hour = user.hours.create(hr: 1, day: 1)
+hour = user2.hours.create(hr: 1, day: 1)
+
 if ust.save
-avail = ust.availabilities.create(hour_id: hour.id)
+	avail = ust.availabilities.create(hour_id: hour.id)
 end
 if ust2.save
-avail2 = ust2.availabilities.create(hour_id: hour.id)
+	avail2 = ust2.availabilities.create(hour_id: hour.id)
 end
 
 
