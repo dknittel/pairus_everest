@@ -13,6 +13,7 @@ class PotentialPairsController < ApplicationController
   def create
     group = Group.find(params[:group_id])
     p '*' * 100
+    p params
     PotentialPair.create()
     redirect_to group_path(group)
   end
