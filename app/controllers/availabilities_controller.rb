@@ -27,19 +27,22 @@ class AvailabilitiesController < ApplicationController
     usts = []
     @users.each do |user|
       current_user_selected_topics.each do |cust|
-        if UserSelectedTopic.where(user_id: user.id).topic_id == cust.topic_id
-          usts << UserSelectedTopic.where(user_id: user.id)
+        UserSelectedTopic.where(user_id: user.id).each do |ust|
+          if ust.topic_id == cust.topic_id
+            usts << ust
+          end
         end
       end
     end
 
     availabilities = []
-    usts.each do |ust_array|
-      ust_array.each do |ust|
+    usts.each do |ust|
         availabilities << Availability.where(user_selected_topic_id: ust.id)
-      end
     end
-    
+    p "*" * 80
+    p availabilities
+    p "*" * 80
+
 
     @possible_availability_matches = []
     availabilities.each do |avail|
