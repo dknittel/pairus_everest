@@ -3,6 +3,7 @@ class HoursController < ApplicationController
   end
 
   def create
+    p params
   end
 
   def edit
