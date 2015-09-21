@@ -1,10 +1,16 @@
 <% @possible_availability_matches.each do |avail| %>
-		Username: <% user_helper(avail).handle %>
-		Day: <% hour_helper(avail)[:day] %>
-		Hour: <% hour_helper(avail)[:hour] %>
-		Topic: <% topic_helper(avail).title %>
+	<% pp = PotentialPair.find_by(availability1_id: avail.id, availability2_id: Availability.find_by(UserSelectedTopic.find_by(user_id: @current_user.id, topic_id: ), hour_id: )) %>
+	<% pp = PotentialPair.find_by(availability2_id: avail.id, availability1_id: ) %>
+	<% unless pp.user1_accepted == false || pp.user2_accepted == false %>
+		Username: <%= user_helper(avail).handle %>
+		Day: <%= hour_helper(avail)[:day] %>
+		Hour: <%= hour_helper(avail)[:hour] %>
+		Topic: <%= topic_helper(avail).title %>
+		<%= form_for :availability, :url => group_potential_pairs_path(@group, :user_id => user_helper(avail).id, :time => hour_helper(avail), :avail => avail.id, :accepted => 'true'), :html => { :method => :post } do |f| %>
+		<%= f.submit "Select Pair" %>
+		<% end %>
+		<%= form_for :availability, :url => group_potential_pairs_path(@group,  :user_id => user_helper(avail).id, :time => hour_helper(avail), :avail => avail.id, :accepted => 'false'), :html => { :method => :post } do |f| %>
+		<%= f.submit "Skip" %>
+		<% end %>
 	<% end %>
-<!-- , group_potential_pairs_path(@group) -->
-<%= @possible_availability_matches.each do |avail| %>
-<p><%= avail %></p>
 <% end %>

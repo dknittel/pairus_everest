@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20150918210444) do
   create_table "potential_pairs", force: :cascade do |t|
     t.boolean  "user1_accepted"
     t.boolean  "user2_accepted"
-    t.integer  "availability"
+    t.integer  "availability1_id"
     t.integer  "availability2_id"
     t.integer  "topic_id"
     t.integer  "hour_id"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20150918210444) do
     t.datetime "updated_at",       null: false
   end
 
-  add_index "potential_pairs", ["availability"], name: "index_potential_pairs_on_availability", using: :btree
+  add_index "potential_pairs", ["availability1_id"], name: "index_potential_pairs_on_availability1_id", using: :btree
   add_index "potential_pairs", ["hour_id"], name: "index_potential_pairs_on_hour_id", using: :btree
   add_index "potential_pairs", ["topic_id"], name: "index_potential_pairs_on_topic_id", using: :btree
 

@@ -56,8 +56,8 @@ class AvailabilitiesController < ApplicationController
         end
       end
     end
-    @possible_availability_matches
-    render :index
+    @current_user = current_user
+
   end
 
   def create
