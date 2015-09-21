@@ -8,7 +8,13 @@ class UserSelectedTopicsController < ApplicationController
     topics.each do |topic|
       user.user_selected_topics << UserSelectedTopic.create(user_id: user.id, topic_id: topic)
     end
-    p user.user_selected_topics
+    
+    user.user_selected_topics.each do |ust|
+      user.hours.each do |hour|
+        Availability.create(user_selected_topic_id: ust.id, hour_id: hour.id)
+      end
+    end
+
      redirect_to group_availabilities_path(group.id)
   end
 end

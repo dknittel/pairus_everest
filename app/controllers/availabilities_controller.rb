@@ -37,7 +37,9 @@ class AvailabilitiesController < ApplicationController
 
     availabilities = []
     usts.each do |ust|
-        availabilities << Availability.where(user_selected_topic_id: ust.id)
+        ust.availabilities.each do |avail|
+          availabilities << avail
+        end
     end
     p "*" * 80
     p availabilities
