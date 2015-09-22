@@ -1,5 +1,7 @@
-<%= @group.name %>
-</br>
+<h2><%= @group.name %></h2>
+<% if current_user.id == @group.admin_id %>
+	<h3><%= @group.link %></h3>
+<% end %>
 </br>
 <div>
 <%= form_tag(controller: "user_selected_topics", action: "create", method: "post") %>
@@ -10,7 +12,7 @@
 			<td><%= topic.title %></td>
 			<% if current_user.id == @group.admin_id %>
 			<td>
-				<%= link_to "Delete Topic", group_topic_path(@group.id, topic.id) %>
+				<%= link_to "Delete Topic", group_topic_path(@group.id, topic.id), method: :delete, data: {confirm: 'Delete Topic?'} %>
 			</td>
 			<% end %>
 		</tr>
