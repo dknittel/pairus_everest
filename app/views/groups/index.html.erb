@@ -8,38 +8,140 @@ My Groups
 	<% end %>
 
 <%= link_to 'Create New Group', new_group_path %>
+<div>
+	<h3>Current Schedule<h3>
+		<% current_user.hours.each do |day| %>
+		<%= day.month %><br>
+		<%= day.day %><br>
+		<%= day.hr %>
+		<% end %>
 
+</div>
+<div class="calender">
 <%= form_for :hour, :url => hours_path  do |f| %>
 <% mytime = Time.now %>
+<table>
+<tr>
  <% 7.times do %>
- <p><%= mytime.asctime.gsub(/\d*[:]\d*[:]\d*\s\d*/,"") %></p>
+	<td class="days">
+ <table>
+ <tr>
+ <th class="dateheader">
+ <% mt = mytime.asctime.gsub(/\d*[:]\d*[:]\d*\s\d*/,"").split(" ") %>
+ <p>
+ <% mt.each do |word| %>
+ <%= word %><br>
+	 <% end %>
+ </p>
+ </th>
+ </tr>
  <!-- <input class="hour" type="checkbox" name="hours<%= mytime.day %>[]" value="1">1
  <input class="hour" type="checkbox" name="hours<%= mytime.day %>[]" value="2">2
  <input class="hour" type="checkbox" name="hours<%= mytime.day %>[]" value="3">3
  <input class="hour" type="checkbox" name="hours<%= mytime.day %>[]" value="4">4
  <input class="hour" type="checkbox" name="hours<%= mytime.day %>[]" value="5">5 -->
+ <tr>
+ 	<td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="6">6 am
+ 	</td>
+ </tr>
+ <tr>
+ 	<td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="7">7 am
+ 	</td>
+ </tr>
+ <tr>
+  <td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="8">8 am
+  </td>
+ </tr>
+ <tr>
+  <td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="9">9 am
+  </td>
+ </tr>
+ <tr>
+  <td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="10">10 am
+  </td>
+ </tr>
+ <tr>
+  <td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="11">11 am
+  </td>
+ </tr>
+ <tr>
+  <td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="12">12 pm
+  </td>
+ </tr>
+ <tr>
+  <td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="13">1 pm
+  </td>
+ </tr>
+ <tr>
+  <td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="14">2 pm
+  </td>
+ </tr>
+ <tr>
+  <td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="15">3 pm
+  </td>
+ </tr>
+ <tr>
+  <td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="16">4 pm
+  </td>
+ </tr>
+ <tr>
+  <td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="17">5 pm
+  </td>
+ </tr>
+ <tr>
+  <td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="18">6 pm
+  </td>
+ </tr>
+ <tr>
+  <td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="19">7 pm
+  </td>
+ </tr>
+ <tr>
+ 	<td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="20">8 pm
+ 	</td>
+ </tr>
+ <tr>
+  <td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="21">9 pm
+  </td>
+ </tr>
+ <tr>
+  <td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="22">10 pm
+  </td>
+ </tr>
+ <tr>
+  <td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="23">11 pm
- <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="24">12
- pm <br>
+  </td>
+ </tr>
+ <tr>
+  <td>
+ <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="24">12 pm
+  </td>
+ </tr>
  <% mytime += 1.day %>
+</table>
+</td>
  <% end %>
+ </tr>
+</table>
 <br>
 <%= f.submit "Create Schedule" %>
 <% end %>
+</div>
