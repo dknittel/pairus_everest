@@ -9,10 +9,10 @@
 		<tr>
 			<td>
 
-		Username: <%= user_helper(avail).handle %>
-		Day: <%= hour_helper(avail)[:day] %>
-		Hour: <%= hour_helper(avail)[:hour] %>
-		Topic: <%= topic_helper(avail).title %>
+		Username: <%= user_helper(avail).handle %> -&nbsp;
+		Date: <%= avail_date(avail).strftime("%a %b %d %I") %> -
+		Topic: <%= topic_helper(avail).title %> &nbsp;
+
 		&nbsp;
 			</td>
 
