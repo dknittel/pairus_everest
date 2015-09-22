@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20150922021519) do
   create_table "user_selected_topics", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "topic_id"
+    t.boolean  "selected"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
