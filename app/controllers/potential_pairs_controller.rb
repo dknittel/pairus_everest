@@ -34,7 +34,6 @@ class PotentialPairsController < ApplicationController
     p params[:time][:hour]
     p current_avail.id
     if !(PotentialPair.exists?(availability1_id: current_avail.id, availability2_id: params[:avail])) && !(PotentialPair.exists?(availability2_id: current_avail.id, availability1_id: params[:avail]))
-      p '{' * 100
       p params[:accepted]
       if params[:accepted] == "true"
         PotentialPair.create(availability1_id: current_avail.id, availability2_id: params[:avail], user1_accepted: true, user2_accepted: nil)
@@ -54,9 +53,10 @@ class PotentialPairsController < ApplicationController
       pp = PotentialPair.find_by(availability1_id: current_avail.id, availability2_id: params[:avail])
       pp.user2_accepted = true
       pp.save
+      p '{' * 100
       #send email to both users
-      UserMailer.pair_email(current_user)
-      UserMailer.pair_email(user2)
+      UserMailer.pair_email(current_user).deliver_now
+      UserMailer.pair_email(user2).deliver_now
     else
       pp = PotentialPair.find_by(availability1_id: current_avail.id, availability2_id: params[:avail])
       pp.user2_accepted = false
@@ -68,8 +68,9 @@ class PotentialPairsController < ApplicationController
       pp.user2_accepted = true
       pp.save
       #send email to both users
-      UserMailer.pair_email(current_user)
-      UserMailer.pair_email(user2)
+      p '{' * 100
+      UserMailer.pair_email(current_user).deliver_now
+      UserMailer.pair_email(user2).deliver_now
     else
       pp = PotentialPair.find_by(availability2_id: current_avail.id, availability1_id: params[:avail])
       pp.user2_accepted = false
