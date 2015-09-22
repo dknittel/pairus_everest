@@ -1,9 +1,8 @@
-Welcome to pairus, <%= @user.handle %>
+<%= @user.handle %>:
 ===============================================
 
-
-
-
+You have been scheduled for a pairing session with <%= @user2.handle %> on <%= @topic.title %> at <%= Time.new(Time.now.year, @time[:month], @time[:day], @time[:hour]).strftime("%a %b %d @ %l%P") %>. Please contact them at <%= @user2.handle %> to plan your pairing session.	
  
- 
-Thanks for joining and have a great day!
+Thank you for using pairus and have a great day!
+
+<!-- .strftime("%a %b %d @ %l%P") %> -->

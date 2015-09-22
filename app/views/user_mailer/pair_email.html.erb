@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Welcome to pairus, <%= @user.handle %></h1>
-    <p>
-      You have successfully signed up to pairus,
-      your username is: <%= @user.handle %>.<br>
-    </p>
-    <p>
-      To login to the site, just follow this link: <%= @url %>.
-    </p>
-    <p>Thanks for joining and have a great day!</p>
-  </body>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+  <h1><%= @user.handle %>:</h1>
+  <p>
+    You have been scheduled for a pairing session with <%= @user2.handle %> on <%= @topic.title %> at <%= Time.new(Time.now.year, @time[:month], @time[:day], @time[:hour]).strftime("%a %b %d @ %l%P") %>. Please contact them at <%= @user2.handle %> to plan your pairing session.<br>
+  </p>
+  <p>Thank you for using pairus and have a great day!</p>
+</body>
 </html>

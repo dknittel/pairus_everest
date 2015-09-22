@@ -55,8 +55,8 @@ class PotentialPairsController < ApplicationController
       pp.save
       p '{' * 100
       #send email to both users
-      UserMailer.pair_email(current_user).deliver_now
-      UserMailer.pair_email(user2).deliver_now
+      UserMailer.pair_email(current_user, user2, topic, params[:time]).deliver_now
+      UserMailer.pair_email(user2, current_user, topic, params[:time]).deliver_now
       Hour.find(current_avail.hour_id).destroy     
       Hour.find(a.hour_id).destroy     
     else
@@ -71,8 +71,8 @@ class PotentialPairsController < ApplicationController
       pp.save
       p '{' * 100
       #send email to both users
-      UserMailer.pair_email(current_user).deliver_now
-      UserMailer.pair_email(user2).deliver_now
+      UserMailer.pair_email(current_user, user2, topic, params[:time]).deliver_now
+      UserMailer.pair_email(user2, current_user, topic, params[:time]).deliver_now
       Hour.find(current_avail.hour_id).destroy
       Hour.find(a.hour_id).destroy
     else
