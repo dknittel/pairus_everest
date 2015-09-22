@@ -33,8 +33,9 @@ class PotentialPairsController < ApplicationController
     p params[:time][:hour]
     p current_avail.id
     if !(PotentialPair.exists?(availability1_id: current_avail.id, availability2_id: params[:avail])) && !(PotentialPair.exists?(availability2_id: current_avail.id, availability1_id: params[:avail]))
-      p 'a' * 100
-      if params[:accepted]
+      p '{' * 100
+      p params[:accepted]
+      if params[:accepted] == "true"
         PotentialPair.create(availability1_id: current_avail.id, availability2_id: params[:avail], user1_accepted: true, user2_accepted: nil)
       else
         PotentialPair.create(availability1_id: current_avail.id, availability2_id: params[:avail], user1_accepted: false, user2_accepted: nil)
@@ -48,7 +49,7 @@ class PotentialPairsController < ApplicationController
     #   end
   elsif (PotentialPair.exists?(availability1_id: current_avail.id, availability2_id: params[:avail]))
     p 'c' * 100
-    if params[:accepted] 
+    if params[:accepted] == "true"
       pp = PotentialPair.find_by(availability1_id: current_avail.id, availability2_id: params[:avail])
       pp.user2_accepted = true
       pp.save
@@ -58,7 +59,7 @@ class PotentialPairsController < ApplicationController
       pp.save
     end
   else
-    if params[:accepted] 
+    if params[:accepted] == "true"
       pp = PotentialPair.find_by(availability2_id: current_avail.id, availability1_id: params[:avail])
       pp.user2_accepted = true
       pp.save

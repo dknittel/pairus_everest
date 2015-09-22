@@ -11,7 +11,11 @@ module AvailabilitiesHelper
 
 	def avail_date(avail)
 		hour = Hour.find(avail.hour_id)
-		session_date = Time.new(hour.month, hour.day, hour.hr)
+		p 'HOURRRRRRRRRRRRRRRRRR'
+		p hour.month
+		p hour.day
+		p hour.hr
+		session_date = Time.new(Time.now.year, hour.month, hour.day, hour.hr)
 	end
 
 	def topic_helper(avail)

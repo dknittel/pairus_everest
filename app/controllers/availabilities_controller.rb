@@ -35,7 +35,7 @@ class AvailabilitiesController < ApplicationController
     usts = []
     @users.each do |user|
       current_user_selected_topics.each do |cust|
-        UserSelectedTopic.where(user_id: user.id).each do |ust|
+        UserSelectedTopic.where(user_id: user.id, selected: true).each do |ust|
           if ust.topic_id == cust.topic_id
             usts << ust
           end
