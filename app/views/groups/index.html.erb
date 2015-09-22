@@ -8,14 +8,15 @@ My Groups
 	<% end %>
 
 <%= link_to 'Create New Group', new_group_path %>
-<div>
-	<h3>Current Schedule<h3>
+<div class="currentSchedule">
+	<h3>Current Schedule</h3>
+	<ul>
 		<% current_user.hours.each do |day| %>
-		<%= day.month %><br>
-		<%= day.day %><br>
-		<%= day.hr %>
+		<li>
+			Date: <%= thedate(day).strftime("%a %b %d @ %l%P") %>
+		</li>
 		<% end %>
-
+	</ul>
 </div>
 <div class="calender">
 <%= form_for :hour, :url => hours_path  do |f| %>
