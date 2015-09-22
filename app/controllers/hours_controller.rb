@@ -40,5 +40,8 @@ class HoursController < ApplicationController
   end
 
   def destroy
+    hour = Hour.find(params[:id])
+    hour.destroy
+    redirect_to "/groups"
   end
 end
