@@ -15,7 +15,7 @@ class AvailabilitiesController < ApplicationController
       end
     end
 
-    current_user_selected_topics = UserSelectedTopic.where(user_id: current_user.id)
+    current_user_selected_topics = UserSelectedTopic.where(user_id: current_user.id, selected: true)
     current_user_availabilities = []
 
     current_user_selected_topics.each do |cust|
@@ -37,6 +37,8 @@ class AvailabilitiesController < ApplicationController
         end
       end
     end
+    p 'qqqqqqqqqqqqqqqqqqqq'
+    p usts
 
     availabilities = []
     usts.each do |ust|
@@ -73,6 +75,8 @@ class AvailabilitiesController < ApplicationController
         end
       end
     end
+    p 'aaaaaaaaaaaaaaaaaaaaaaaaaaa'
+    @possible_availability_matches = @possible_availability_matches.uniq
     @current_user = current_user
 
   end
