@@ -23,6 +23,11 @@ class AvailabilitiesController < ApplicationController
         current_user_availabilities << avail
       end
     end
+    p '8' * 100
+    p current_user_availabilities.count
+    p current_user_availabilities.uniq.count
+    #these are unique
+    p '8' * 100
     # current_user_topics = []
     # current_user_selected_topics.each do |cust|
     #   current_user_topics << Topic.find(cust.topic_id)
@@ -47,14 +52,16 @@ class AvailabilitiesController < ApplicationController
       end
     end
     p "*" * 80
-    p availabilities
+    p availabilities.count
+    p availabilities.uniq.count
+    #these are all unique
     p "*" * 80
 
 
     @possible_availability_matches = []
     availabilities.each do |avail|
       current_user_availabilities.each do |current_avail|
-        if Hour.find(avail.hour_id).day == Hour.find(current_avail.hour_id).day && Hour.find(avail.hour_id).hr == Hour.find(current_avail.hour_id).hr
+        if Hour.find(avail.hour_id).day == Hour.find(current_avail.hour_id).day && Hour.find(avail.hour_id).hr == Hour.find(current_avail.hour_id).hr && Hour.find(avail.hour_id).month == Hour.find(current_avail.hour_id).month && UserSelectedTopic.find(avail.user_selected_topic_id).topic_id == UserSelectedTopic.find(current_avail.user_selected_topic_id).topic_id
           # find PotentialPair for the current_avail && avail check to see if accped is false for either user.
           if(PotentialPair.exists?(availability1_id: current_avail.id, availability2_id: avail.id))
             pp = PotentialPair.find_by(availability1_id: current_avail.id, availability2_id: avail.id)
@@ -83,6 +90,9 @@ class AvailabilitiesController < ApplicationController
       end
     end
     p 'aaaaaaaaaaaaaaaaaaaaaaaaaaa'
+    p @possible_availability_matches.count
+    p @possible_availability_matches.uniq.count
+    #now these are unique
     @possible_availability_matches = @possible_availability_matches.uniq
     @current_user = current_user
 

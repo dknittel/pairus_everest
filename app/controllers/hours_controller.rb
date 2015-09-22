@@ -14,7 +14,9 @@ class HoursController < ApplicationController
           time_array = params["#{current_day}"]
 
           time_array.each do |hour|
-            current_user.hours.create(day: current_day.to_i, hr: hour, month: month)
+            if !current_user.hours.exists?(day: current_day.to_i, hr: hour, month: month)
+              current_user.hours.create(day: current_day.to_i, hr: hour, month: month)
+            end
           end
         end
 
