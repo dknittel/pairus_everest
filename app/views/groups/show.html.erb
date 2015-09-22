@@ -10,7 +10,7 @@
 			<td><%= topic.title %></td>
 			<% if current_user.id == @group.admin_id %>
 			<td>
-				<%= link_to "Delete Topic", group_topic_path(@group_id) %>
+				<%= link_to "Delete Topic", group_topic_path(@group.id, topic.id) %>
 			</td>
 			<% end %>
 		</tr>
