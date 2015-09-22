@@ -46,27 +46,38 @@ class PotentialPairsController < ApplicationController
     #   else
     #     PotentialPair.create(availability2_id: current_avail.id, availability1_id: params[:avail], user1_accepted: false, user2_accepted: nil)
     #   end
+  elsif !(PotentialPair.exists?(availability1_id: current_avail.id, availability2_id: params[:avail]))
+    p 'c' * 100
+    if params[:accepted] 
+      pp = PotentialPair.find_by(availability1_id: current_avail.id, availability2_id: params[:avail])
+      pp.user2_accepted = true
+      pp.save
     else
-      p 'c' * 100
-      if params[:accepted]
-        pp = PotentialPair.find_by(availability1_id: current_avail.id, availability2_id: params[:avail])
-        pp.user2_accepted = true
-        pp.save
-      else
-        pp = PotentialPair.find_by(availability1_id: current_avail.id, availability2_id: params[:avail])
-        pp.user2_accepted = false
-        pp.save
-      end
+      pp = PotentialPair.find_by(availability1_id: current_avail.id, availability2_id: params[:avail])
+      pp.user2_accepted = false
+      pp.save
     end
-    redirect_to group_path(group)
-  end
+  else
+    if params[:accepted] 
+      pp = PotentialPair.find_by(availability2_id: current_avail.id, availability1_id: params[:avail])
+      pp.user2_accepted = true
+      pp.save
+    else
+      pp = PotentialPair.find_by(availability2_id: current_avail.id, availability1_id: params[:avail])
+      pp.user2_accepted = false
+      pp.save
+    end
 
-  def edit
   end
+  redirect_to group_path(group)
+end
 
-  def update
-  end
+def edit
+end
 
-  def destroy
-  end
+def update
+end
+
+def destroy
+end
 end
