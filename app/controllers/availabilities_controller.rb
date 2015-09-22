@@ -58,9 +58,11 @@ class AvailabilitiesController < ApplicationController
           # find PotentialPair for the current_avail && avail check to see if accped is false for either user.
           if(PotentialPair.exists?(availability1_id: current_avail.id, availability2_id: avail.id))
             pp = PotentialPair.find_by(availability1_id: current_avail.id, availability2_id: avail.id)
+            current_avail_1_or_2 = 1
           elsif
             (PotentialPair.exists?(availability1_id: avail.id, availability2_id: current_avail.id))
             pp = PotentialPair.find_by(availability1_id: avail.id, availability2_id: current_avail.id)
+            current_avail_1_or_2 = 2
           else
             pp = nil
           end
@@ -68,7 +70,12 @@ class AvailabilitiesController < ApplicationController
             @possible_availability_matches << avail
           else
             if pp.user1_accepted != false && pp.user2_accepted != false
-              @possible_availability_matches << avail
+              #check if this user accepted it:
+              if !(current_avail_1_or_2 == 1 && pp.user1_accepted == true)
+                if !(current_avail_1_or_2 == 2 && pp.user2_accepted == true)
+                  @possible_availability_matches << avail
+                end
+              end
             end
           end
 

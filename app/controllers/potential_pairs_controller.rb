@@ -46,7 +46,7 @@ class PotentialPairsController < ApplicationController
     #   else
     #     PotentialPair.create(availability2_id: current_avail.id, availability1_id: params[:avail], user1_accepted: false, user2_accepted: nil)
     #   end
-  elsif !(PotentialPair.exists?(availability1_id: current_avail.id, availability2_id: params[:avail]))
+  elsif (PotentialPair.exists?(availability1_id: current_avail.id, availability2_id: params[:avail]))
     p 'c' * 100
     if params[:accepted] 
       pp = PotentialPair.find_by(availability1_id: current_avail.id, availability2_id: params[:avail])
