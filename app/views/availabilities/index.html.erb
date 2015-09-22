@@ -1,3 +1,6 @@
+<% if @no_matches %>
+	<h4>There are no available pairs on these topics at this time.</h4>
+<% end %>
 <% @possible_availability_matches.each do |avail| %>
 	<table>
 		<tr>
