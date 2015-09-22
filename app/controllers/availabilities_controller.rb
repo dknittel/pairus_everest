@@ -69,7 +69,7 @@ class AvailabilitiesController < ApplicationController
           if pp == nil
             @possible_availability_matches << avail
           else
-            if pp.user1_accepted != false && pp.user2_accepted != false
+            if (pp.user1_accepted != false && pp.user2_accepted != false) && (pp.user1_accepted != true || pp.user2_accepted != true)
               #check if this user accepted it:
               if !(current_avail_1_or_2 == 1 && pp.user1_accepted == true)
                 if !(current_avail_1_or_2 == 2 && pp.user2_accepted == true)
