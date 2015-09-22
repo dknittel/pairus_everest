@@ -1,5 +1,5 @@
-user = User.create(handle: "asdf", email: "asdf@gmail.com", password: "asdfasdf", password_confirmation: "asdfasdf", zipcode: "12345")
-user2 = User.create(handle: "asdf2", email: "asdf2@gmail.com", password: "asdfasdf", password_confirmation: "asdfasdf", zipcode: "12345")
+user = User.create(handle: "asdf", email: "asdf@gmail.com", password: "password", password_confirmation: "password", zipcode: "12345")
+user2 = User.create(handle: "asdf2", email: "asdf2@gmail.com", password: "password", password_confirmation: "password", zipcode: "12345")
 
 group = Group.create(name: 'g')
 
@@ -20,7 +20,3 @@ end
 if ust2.save
 	avail2 = ust2.availabilities.create(hour_id: hour.id)
 end
-
-
-
-
