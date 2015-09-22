@@ -21,11 +21,14 @@ My Groups
 </div>
 <div class="calender">
 <%= form_for :hour, :url => hours_path  do |f| %>
+<%= f.submit "Create Schedule" %>
+</br>
+</br>
 <% mytime = Time.now %>
 <table>
 <tr>
  <% 7.times do %>
-	<td class="days">
+  <td class="days">
  <table>
  <tr>
  <th class="dateheader">
@@ -33,7 +36,7 @@ My Groups
  <p>
  <% mt.each do |word| %>
  <%= word %><br>
-	 <% end %>
+   <% end %>
  </p>
  </th>
  </tr>
@@ -43,14 +46,14 @@ My Groups
  <input class="hour" type="checkbox" name="hours<%= mytime.day %>[]" value="4">4
  <input class="hour" type="checkbox" name="hours<%= mytime.day %>[]" value="5">5 -->
  <tr>
- 	<td>
+  <td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="6">6 am
- 	</td>
+  </td>
  </tr>
  <tr>
- 	<td>
+  <td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="7">7 am
- 	</td>
+  </td>
  </tr>
  <tr>
   <td>
@@ -113,9 +116,9 @@ My Groups
   </td>
  </tr>
  <tr>
- 	<td>
+  <td>
  <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="20">8 pm
- 	</td>
+  </td>
  </tr>
  <tr>
   <td>
@@ -144,6 +147,5 @@ My Groups
  </tr>
 </table>
 <br>
-<%= f.submit "Create Schedule" %>
 <% end %>
 </div>
