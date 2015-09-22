@@ -9,7 +9,7 @@ My Groups
 
 <%= link_to 'Create New Group', new_group_path %>
 <div class="currentSchedule">
-	<h3>Current Schedule</h3>
+	<h3>Available Times:</h3>
 	<ul>
 		<% current_user.hours.each do |day| %>
 		<li>
@@ -133,7 +133,7 @@ My Groups
  </tr>
  <tr>
   <td>
- <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="24">12 pm
+ <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="24">12 am
   </td>
  </tr>
  <% mytime += 1.day %>
