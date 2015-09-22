@@ -38,6 +38,12 @@ class PotentialPairsController < ApplicationController
       else
         PotentialPair.create(availability1_id: current_avail.id, availability2_id: params[:avail], user1_accepted: false, user2_accepted: nil)
       end
+    elsif !(PotentialPair.exists?(availability2_id: current_avail.id, availability1_id: params[:avail]))
+      if params[:accepted]
+        PotentialPair.create(availability2_id: current_avail.id, availability1_id: params[:avail], user1_accepted: true, user2_accepted: nil)
+      else
+        PotentialPair.create(availability2_id: current_avail.id, availability1_id: params[:avail], user1_accepted: false, user2_accepted: nil)
+      end
     else
       if params[:accepted]
         pp = PotentialPair.find_by(availability1_id: current_avail.id, availability2_id: params[:avail])
