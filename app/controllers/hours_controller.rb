@@ -5,7 +5,7 @@ class HoursController < ApplicationController
 
   def create
     hours = []
-
+    month = Time.now.month
     7.times do |num|
         current_day = Time.now.day.to_i
         current_day = (current_day.to_i + num)
@@ -14,14 +14,16 @@ class HoursController < ApplicationController
           time_array = params["#{current_day}"]
 
           time_array.each do |hour|
-            current_user.hours.create(day: current_day.to_i, hr: hour)
+            current_user.hours.create(day: current_day.to_i, hr: hour, month: month)
           end
         end
 
-      user_group = UserGroup.find_by(user_id: current_user.id)
+      if current_user.groups.count > 1
       @group = Group.find(user_group.group_id)
+      user_group = UserGroup.find_by(user_id: current_user.id)
+      end
     end
-      redirect_to group_path(@group)
+      redirect_to root_path
 
     # usts = current_user.user_selected_topics
 
