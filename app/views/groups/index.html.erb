@@ -14,6 +14,7 @@ My Groups
 		<% current_user.hours.each do |day| %>
 		<li>
 			Date: <%= thedate(day).strftime("%a %b %d @ %l%P") %>
+			<%= link_to "Delete", hour_path(day), method: :delete, data: {confirm: 'Confirm Delete?'} %>
 		</li>
 		<% end %>
 	</ul>
