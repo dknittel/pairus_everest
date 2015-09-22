@@ -20,6 +20,7 @@ class PotentialPairsController < ApplicationController
     # else if PotentialPair doesn't exist create one
     a = Availability.find(params[:avail])
     ust = UserSelectedTopic.find(a.user_selected_topic_id)
+    user2 = User.find(ust.user_id)
     topic = Topic.find(ust.topic_id)
     current_avail = Availability.find_by(user_selected_topic_id: UserSelectedTopic.find_by(user_id: current_user.id, topic_id: topic.id).id, hour_id: Hour.find_by(hr: params[:time][:hour], user_id: current_user.id).id)
     p 'O' * 100
@@ -33,7 +34,6 @@ class PotentialPairsController < ApplicationController
     p params[:time][:hour]
     p current_avail.id
     if !(PotentialPair.exists?(availability1_id: current_avail.id, availability2_id: params[:avail])) && !(PotentialPair.exists?(availability2_id: current_avail.id, availability1_id: params[:avail]))
-      p '{' * 100
       p params[:accepted]
       if params[:accepted] == "true"
         PotentialPair.create(availability1_id: current_avail.id, availability2_id: params[:avail], user1_accepted: true, user2_accepted: nil)
@@ -53,6 +53,12 @@ class PotentialPairsController < ApplicationController
       pp = PotentialPair.find_by(availability1_id: current_avail.id, availability2_id: params[:avail])
       pp.user2_accepted = true
       pp.save
+      p '{' * 100
+      #send email to both users
+      UserMailer.pair_email(current_user, user2, topic, params[:time]).deliver_now
+      UserMailer.pair_email(user2, current_user, topic, params[:time]).deliver_now
+      Hour.find(current_avail.hour_id).destroy     
+      Hour.find(a.hour_id).destroy     
     else
       pp = PotentialPair.find_by(availability1_id: current_avail.id, availability2_id: params[:avail])
       pp.user2_accepted = false
@@ -63,6 +69,12 @@ class PotentialPairsController < ApplicationController
       pp = PotentialPair.find_by(availability2_id: current_avail.id, availability1_id: params[:avail])
       pp.user2_accepted = true
       pp.save
+      p '{' * 100
+      #send email to both users
+      UserMailer.pair_email(current_user, user2, topic, params[:time]).deliver_now
+      UserMailer.pair_email(user2, current_user, topic, params[:time]).deliver_now
+      Hour.find(current_avail.hour_id).destroy
+      Hour.find(a.hour_id).destroy
     else
       pp = PotentialPair.find_by(availability2_id: current_avail.id, availability1_id: params[:avail])
       pp.user2_accepted = false

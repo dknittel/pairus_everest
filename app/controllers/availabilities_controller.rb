@@ -77,6 +77,13 @@ class AvailabilitiesController < ApplicationController
             @possible_availability_matches << avail
           else
             if (pp.user1_accepted != false && pp.user2_accepted != false) && (pp.user1_accepted != true || pp.user2_accepted != true)
+              # availabilities.each do |avail|
+              #   avail.potential_pairs.each do |pp|
+                  
+              #   end
+              # end
+              #loop through all avails with same hr, day, and month
+              #if user2_accepted is false, continue
               #check if this user accepted it:
               if !(current_avail_1_or_2 == 1 && pp.user1_accepted == true)
                 if !(current_avail_1_or_2 == 2 && pp.user2_accepted == true)
