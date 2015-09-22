@@ -32,19 +32,22 @@ class PotentialPairsController < ApplicationController
     p 'O' * 100
     p params[:time][:hour]
     p current_avail.id
-    if !(PotentialPair.exists?(availability1_id: current_avail.id, availability2_id: params[:avail]))
+    if !(PotentialPair.exists?(availability1_id: current_avail.id, availability2_id: params[:avail])) && !(PotentialPair.exists?(availability2_id: current_avail.id, availability1_id: params[:avail]))
+      p 'a' * 100
       if params[:accepted]
         PotentialPair.create(availability1_id: current_avail.id, availability2_id: params[:avail], user1_accepted: true, user2_accepted: nil)
       else
         PotentialPair.create(availability1_id: current_avail.id, availability2_id: params[:avail], user1_accepted: false, user2_accepted: nil)
       end
-    elsif !(PotentialPair.exists?(availability2_id: current_avail.id, availability1_id: params[:avail]))
-      if params[:accepted]
-        PotentialPair.create(availability2_id: current_avail.id, availability1_id: params[:avail], user1_accepted: true, user2_accepted: nil)
-      else
-        PotentialPair.create(availability2_id: current_avail.id, availability1_id: params[:avail], user1_accepted: false, user2_accepted: nil)
-      end
+    # elsif !(PotentialPair.exists?(availability2_id: current_avail.id, availability1_id: params[:avail]))
+    #   p 'b' * 100
+    #   if params[:accepted]
+    #     PotentialPair.create(availability2_id: current_avail.id, availability1_id: params[:avail], user1_accepted: true, user2_accepted: nil)
+    #   else
+    #     PotentialPair.create(availability2_id: current_avail.id, availability1_id: params[:avail], user1_accepted: false, user2_accepted: nil)
+    #   end
     else
+      p 'c' * 100
       if params[:accepted]
         pp = PotentialPair.find_by(availability1_id: current_avail.id, availability2_id: params[:avail])
         pp.user2_accepted = true
