@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150918210444) do
+ActiveRecord::Schema.define(version: 20150922222149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150918210444) do
     t.integer  "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "link"
   end
 
   create_table "hours", force: :cascade do |t|
@@ -41,6 +42,7 @@ ActiveRecord::Schema.define(version: 20150918210444) do
     t.boolean  "taken?"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "month"
   end
 
   add_index "hours", ["user_id"], name: "index_hours_on_user_id", using: :btree
@@ -48,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150918210444) do
   create_table "potential_pairs", force: :cascade do |t|
     t.boolean  "user1_accepted"
     t.boolean  "user2_accepted"
-    t.integer  "availability"
+    t.integer  "availability1_id"
     t.integer  "availability2_id"
     t.integer  "topic_id"
     t.integer  "hour_id"
@@ -56,7 +58,7 @@ ActiveRecord::Schema.define(version: 20150918210444) do
     t.datetime "updated_at",       null: false
   end
 
-  add_index "potential_pairs", ["availability"], name: "index_potential_pairs_on_availability", using: :btree
+  add_index "potential_pairs", ["availability1_id"], name: "index_potential_pairs_on_availability1_id", using: :btree
   add_index "potential_pairs", ["hour_id"], name: "index_potential_pairs_on_hour_id", using: :btree
   add_index "potential_pairs", ["topic_id"], name: "index_potential_pairs_on_topic_id", using: :btree
 
@@ -82,6 +84,7 @@ ActiveRecord::Schema.define(version: 20150918210444) do
   create_table "user_selected_topics", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "topic_id"
+    t.boolean  "selected"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

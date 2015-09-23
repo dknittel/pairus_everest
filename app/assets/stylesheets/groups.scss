@@ -1,3 +1,32 @@
 // Place all the styles related to the groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.month{
+  padding-left: .5em;
+  padding-right: .5em;
+}
+.day{
+  padding-left: .5em;
+  padding-right: .5em;
+}
+.hour{
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.days{
+  padding-left: 1em;
+  padding-right: 1em;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+.dateheader{
+  border-bottom: 1px solid black;
+}
+.calender{
+  padding-top: 1.5em;
+}
+.currentSchedule{
+  border-bottom: 1px solid black;
+}

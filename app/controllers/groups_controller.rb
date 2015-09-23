@@ -1,11 +1,18 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
   def create
+    # create the group
     group = Group.create(group_params)
+
+    # make the current user the groups admin
     group.admin_id = current_user.id
-    current_user.user_groups.create(group: group, user: current_user)
+    
+    # save the group
     if group.save
-      redirect_to new_group_topic_path(group)
+
+    # if saved then shovel the group into current users user_groups
+    current_user.user_groups.create(group: group, user: current_user)
+    redirect_to new_group_topic_path(group)
     else
       render :new
     end

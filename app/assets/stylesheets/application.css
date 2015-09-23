@@ -13,3 +13,77 @@
  *= require_tree .
  *= require_self
  */
+
+ #content{
+   padding: 2em;
+ }
+
+ html body {
+    background: url('Kraken.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.outlined-text {
+  color: black;
+  text-shadow:
+  -1px -1px 0 #ffffff,
+  1px -1px 0 #ffffff,
+  -1px 1px 0 #ffffff,
+  1px 1px 0 #ffffff;
+}
+
+.alert {
+  background: lightgrey;
+}
+
+.trans75 {
+	zoom: 1;
+	filter: alpha(opacity=75);
+	opacity: 0.75;
+}
+
+.trans85 {
+	zoom: 1;
+	filter: alpha(opacity=85);
+	opacity: 0.85;
+}
+
+.currentSchedule {
+  margin-top: 5px;
+  margin: 10px 0px;
+}
+
+.center {
+  text-align: center;
+}
+
+.wid-55 {
+  width: 55%;
+}
+
+.title {
+  font-size: 1.5em;
+}
+
+.btn-marg-5 {
+  margin: 5px 0px;
+}
+
+.bord-rad-5 {
+  border-radius: 5px;
+}
+
+.bg-white {
+  background: white;
+}
+
+.pad-5-25 {
+  padding: 5px 25px;
+}
+
+.marg-l-25 {
+  margin-left: 25px;
+}

@@ -1,18 +1,27 @@
-<%= @group.name %>
-</br>
+<h2 class="outlined-text"><%= @group.name %></h2>
+<% if current_user.id == @group.admin_id %>
+	<h3 class="outlined-text"><%= @group.link %></h3>
+<% end %>
 </br>
 <div>
 <%= form_tag(controller: "user_selected_topics", action: "create", method: "post") %>
-	<%# link_to 'Find Partner', group_potential_pair_path(@group, @topic) %>
-	<% @topics.each do |topic| %>
-	<!-- we need to get the topic sent as a parameter -->
-
-	<input type="checkbox" name="topic[<%= topic.id %>]" value=<%= topic.id %>> <%= topic.title %><br>
+	<table>
+			<% @topics.each do |topic| %>
+		<tr>
+			<td><input type="checkbox" name="topic[<%= topic.id %>]" value="<%= topic.id %>"></td>
+			<td class="outlined-text">&nbsp;<%= topic.title %>&nbsp;</td>
+			<% if current_user.id == @group.admin_id %>
+			<td>
+				<%= link_to "Delete Topic", group_topic_path(@group.id, topic.id), method: :delete, data: {confirm: 'Delete Topic?'} %>
+			</td>
+			<% end %>
+		</tr>
 	<% end %>
-	<input type="submit" name="submit" value="Select Topics" >
+	</table>
+	<input type="hidden" name="group" value="<%= @group.id %>">
+	<input type="submit" name="submit" value="Find Pairs" class="btn btn-primary btn-marg-5" >
 	<br>
 </div>
 	<div>
-		<br>
-		<%= link_to "Add New Topic", new_group_topic_path(@group.id) %>
+		<%= link_to "Add New Topic", new_group_topic_path(@group.id), class: "btn btn-primary btn-marg-5" %>
 	</div>

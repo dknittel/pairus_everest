@@ -27,6 +27,12 @@ gem 'devise'
 # Add Bootstrap
 gem 'bootstrap-sass', '~> 3.3.5.1'
 
+# Add dotenv for secrets
+gem 'dotenv-rails'
+
+# Shortening
+gem 'googl', '~> 0.7.1'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -35,6 +41,10 @@ gem 'bootstrap-sass', '~> 3.3.5.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+group :development do
+  gem 'thin'
+end
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console

@@ -1,12 +1,19 @@
-<div class="jumbotron center">
-     <h1>Welcome to Pairus!</h1>
-     <% if user_signed_in? %>
-          Welcome,  <%= current_user.handle.capitalize %>
-          <%= render template: "groups/index" %>
-     <% else %>
-       <p>
-         <%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %>
-         <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
-       </p>
-  <% end %>
+<div id="content">
+  <div class="jumbotron center bord-rad-5 trans85">
+       <h1>Welcome to Pairus!</h1>
+       <% if user_signed_in? %>
+            Welcome,  <%= current_user.handle.capitalize %>
+            <%= render template: "groups/index" %>
+       <% else %>
+         <p>
+           <%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %>
+           <% if @group_id %>
+              <% session[:group_id] = @group_id %>
+              <%= link_to "Sign up", new_user_registration_path(:group => "#{@group_id}"), class: "btn btn-primary btn-lg" %>
+           <% else  %>
+              <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+           <% end %>
+         </p>
+    <% end %>
+  </div>
 </div>

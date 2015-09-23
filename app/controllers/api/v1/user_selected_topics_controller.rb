@@ -1,22 +1,4 @@
-class LoginController < ApplicationController
-
-  def login
-    sign_in(:user, User.find(params[:id]))
-  end
-
-end
-
-class GroupsController < ApplicationController
-
-  def show
-    group = Group.find_by(params[:id])
-    topics = Topic.where(group_id: group.id)
-    render json: { "group" => group, "topics" => topics }
-  end
-
-end
-
-class UserSelectedTopicsController < ApplicationController
+class Api::V1::UserSelectedTopicsController < ApplicationController
 
   def index
     user = User.find(params[:id])
@@ -39,23 +21,5 @@ class UserSelectedTopicsController < ApplicationController
 
     def topic_params
       params.require(:group).permit(:title, :title2, :title3, :title4, :title5 )
-    end
-end
-
-
-
-class TopicsController < ApplicationController
-
-  def create
-    group = Group.find(params[:group_id])
-    @topic = group.topics.create(params[:title])
-
-    # this should send back all topics with newly created topic
-  end
-
-  private
-
-    def topic_params
-      params.require(:group).permit(:title)
     end
 end

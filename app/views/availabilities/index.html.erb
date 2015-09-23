@@ -1,9 +1,26 @@
 <% @possible_availability_matches.each do |avail| %>
-	<%= form_for @availability do |f| %>
-		<%= user_helper(avail) %>
-		<%= hour_helper(avail).day %>
-		<%= hour_helper(avail).hour %>
-		<%= topic_helper(avail) %>
-		<%= f.submit "Select Pair", new_group_potential_pair_path(@group) %>
-	<% end %>
+	<table>
+		<tr>
+			<td>
+
+		Username: <%= user_helper(avail).handle %> -&nbsp;
+		Date: <%= avail_date(avail).strftime("%a %b %d @ %l%P") %> -
+		Topic: <%= topic_helper(avail).title %> &nbsp;
+
+		&nbsp;
+			</td>
+
+			<td>
+		<%= form_for :availability, :url => group_potential_pairs_path(@group, :user_id => user_helper(avail).id, :time => hour_helper(avail), :avail => avail.id, :accepted => true), :html => { :method => :post } do |f| %>
+		<%= f.submit "Select Pair" %>
+		<% end %>
+			</td>
+			<td>
+		<%= form_for :availability, :url => group_potential_pairs_path(@group,  :user_id => user_helper(avail).id, :time => hour_helper(avail), :avail => avail.id, :accepted => false), :html => { :method => :post } do |f| %>
+		<%= f.submit "Skip" %>
+		<% end %>
+			</td>
+		</tr>
+
 <% end %>
+</table>
