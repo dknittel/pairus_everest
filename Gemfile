@@ -42,6 +42,10 @@ gem 'googl', '~> 0.7.1'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :development do
+  gem 'thin'
+end
+
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
   # gem 'debugger'
