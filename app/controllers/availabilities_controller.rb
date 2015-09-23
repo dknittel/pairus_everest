@@ -96,6 +96,9 @@ class AvailabilitiesController < ApplicationController
         end
       end
     end
+    if @possible_availability_matches.length == 0
+      @no_matches = true
+    end
     p 'aaaaaaaaaaaaaaaaaaaaaaaaaaa'
     p @possible_availability_matches.count
     p @possible_availability_matches.uniq.count

@@ -1,4 +1,4 @@
-user = User.create!(handle: "asdf", email: "daknittel11@gmail.com", password: "password", password_confirmation: "password", zipcode: "12345")
+user = User.create!(handle: "asdf", email: "asdf@gmail.com", password: "password", password_confirmation: "password", zipcode: "12345")
 user2 = User.create!(handle: "asdf2", email: "asdf2@gmail.com", password: "password", password_confirmation: "password", zipcode: "12345")
 
 group = Group.create!(name: 'group Name')

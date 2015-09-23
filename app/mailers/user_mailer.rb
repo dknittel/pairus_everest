@@ -10,5 +10,3 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email,  subject: 'You have a pair match')
   end
 end
-# body: email_body,
-          # content_type: "text/html",
