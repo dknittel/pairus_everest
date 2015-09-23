@@ -39,8 +39,37 @@
   background: lightgrey;
 }
 
-.transparent {
+.trans75 {
 	zoom: 1;
 	filter: alpha(opacity=75);
 	opacity: 0.75;
+}
+
+.trans85 {
+	zoom: 1;
+	filter: alpha(opacity=85);
+	opacity: 0.85;
+}
+
+.currentSchedule {
+  background: lightgrey;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin: 10px 0px;
+}
+
+.calendar {
+  background: lightgrey;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.title {
+  font-size: 1.5em;
+}
+
+#group-list {
+  background: lightgrey;
+  border-radius: 5px;
+  padding: 5px 10px;
 }

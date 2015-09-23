@@ -10,7 +10,7 @@
   <%= render 'layouts/header' %>
   <div id="content">
     <% flash.each do |name, msg| %>
-       <%= content_tag(:div, msg, class: "transparent alert alert-#{name}") %>
+       <%= content_tag(:div, msg, class: "trans75 alert alert-#{name}") %>
     <% end %>
 
     <%= yield %>
