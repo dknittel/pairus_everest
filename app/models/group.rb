@@ -7,7 +7,7 @@ class Group < ActiveRecord::Base
 	has_many :users, through: :user_groups
 	has_many :topics
 
-	before_create :shorten_url
+	before_validation :shorten_url
 
 	private
 	def shorten_url
