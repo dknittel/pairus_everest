@@ -1,4 +1,4 @@
-<div class="trans85 bord-rad-5 bg-cs pad-5-25">
+<div class="trans85 bord-rad-5 bg-cs pad-5-25 wid-55 marg-lr center">
 	<span class="title"> My Groups </span>
 	<p></p>
 	<% if @groups %>
@@ -8,9 +8,9 @@
 		<% end %>
 	<% end %>
 	<p></p>
-	<%= link_to 'Create New Group', new_group_path, class: "btn btn-primary" %>
+	<%= link_to 'Create New Group', new_group_path, class: "btn btn-primary btn-btm-marg", id: "create-group-button" %>
 </div>
-<div class="currentSchedule trans85 bord-rad-5 bg-cs">
+<div class="currentSchedule trans85 bord-rad-5 bg-cs wid-55 marg-lr center">
 	<span class="title marg-l-25">Available Times:</span>
 	<ul>
 		<% current_user.hours.each do |day| %>
@@ -21,17 +21,16 @@
   </ul>
 </div>
 
-<div class="trans85 bord-rad-5 bg-cs pad-5-25">
+<div class="trans85 bord-rad-5 bg-cs pad-5-25 wid-55 marg-lr center">
   <%= form_for :hour, :url => hours_path  do |f| %>
-  <%= f.submit "Create Schedule", class: "btn btn-primary" %>
-  </br>
+  <%= f.submit "Create Schedule", class: "btn btn-primary btn-marg-5" %>
   </br>
   <% mytime = Time.now %>
-  <table>
+  <table class="marg-lr">
   <tr>
     <% 7.times do %>
     <td class="days">
-      <table class="table-hover center">
+      <table class="table-hover">
         <tr>
           <th class="dateheader">
             <% mt = mytime.asctime.gsub(/\d*[:]\d*[:]\d*\s\d*/,"").split(" ") %>
@@ -42,11 +41,6 @@
             </p>
           </th>
         </tr>
-        <!-- <input class="hour" type="checkbox" name="hours<%= mytime.day %>[]" value="1">1
-          <input class="hour" type="checkbox" name="hours<%= mytime.day %>[]" value="2">2
-          <input class="hour" type="checkbox" name="hours<%= mytime.day %>[]" value="3">3
-          <input class="hour" type="checkbox" name="hours<%= mytime.day %>[]" value="4">4
-          <input class="hour" type="checkbox" name="hours<%= mytime.day %>[]" value="5">5 -->
         <tr>
           <td>
             <input class="hour" type="checkbox" name="<%= mytime.day %>[]" value="6">6 am

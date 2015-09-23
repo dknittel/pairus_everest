@@ -26,6 +26,10 @@ body{
     background-size: cover;
 }
 
+#create-group-button {
+  margin-bottom: 5px;
+}
+
 .outlined-text {
   color: black;
   text-shadow:
@@ -52,7 +56,6 @@ body{
 }
 
 .currentSchedule {
-  margin-top: 5px;
   margin: 10px 0px;
 }
 
@@ -72,6 +75,7 @@ body{
   margin: 5px 0px;
 }
 
+
 .bord-rad-5 {
   border-radius: 5px;
 }
@@ -90,4 +94,9 @@ body{
 
 .bold {
   font-weight: bold;
+}
+
+.marg-lr {
+  margin-left: auto;
+  margin-right: auto;
 }

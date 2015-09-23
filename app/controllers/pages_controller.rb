@@ -5,7 +5,9 @@ class PagesController < ApplicationController
       unless session[:group_id] == "" || session[:group_id].nil?
         group_id = session[:group_id]
         group = Group.find(group_id)
-        group.users << current_user
+        unless group.users.include?(current_user)
+          group.users << current_user
+        end
       end
   		redirect_to groups_path
   	end
