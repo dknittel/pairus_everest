@@ -14,7 +14,9 @@
  *= require_self
  */
 
- #content{
+body{
    padding: 2em;
-   background-image: image_url("Kraken.png"));
+   background-image: url("Kraken.png"));
+	/*background-image: url('warriors.png');*/
+	background-size: cover;
  }
