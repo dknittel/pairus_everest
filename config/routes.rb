@@ -17,9 +17,9 @@ Rails.application.routes.draw do
   end
   # You can have the root of your site routed with "root"
   root 'pages#home'
-  resources :hours
   namespace :api do
     namespace :v1 do
+      resources :hours
       resources :groups do
         resources :topics
         resources :availabilities
@@ -28,9 +28,10 @@ Rails.application.routes.draw do
     end
   end
 
-resources :groups do
-  resources :topics
-  resources :availabilities
-  resources :potential_pairs
-end
+  resources :hours
+  resources :groups do
+    resources :topics
+    resources :availabilities
+    resources :potential_pairs
+  end
 end
