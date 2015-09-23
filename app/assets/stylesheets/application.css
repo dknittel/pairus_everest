@@ -71,10 +71,13 @@ body{
   font-size: 1.5em;
 }
 
-.btn-marg-5 {
-  margin: 5px 0px;
+.strong {
+  font-size: 1.2em;
 }
 
+.btn-marg-5 {
+  margin: 5px 5px;
+}
 
 .bord-rad-5 {
   border-radius: 5px;
