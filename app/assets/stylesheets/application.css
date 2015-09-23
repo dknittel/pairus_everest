@@ -25,3 +25,22 @@
     -o-background-size: cover;
     background-size: cover;
 }
+
+.outlined-text {
+  color: black;
+  text-shadow:
+  -1px -1px 0 #ffffff,
+  1px -1px 0 #ffffff,
+  -1px 1px 0 #ffffff,
+  1px 1px 0 #ffffff;
+}
+
+.alert {
+  background: lightgrey;
+}
+
+.transparent {
+	zoom: 1;
+	filter: alpha(opacity=75);
+	opacity: 0.75;
+}
