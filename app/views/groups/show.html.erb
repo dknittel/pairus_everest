@@ -1,7 +1,9 @@
 <h2 class="outlined-text"><%= @group.name %></h2>
 <% if current_user.id == @group.admin_id %>
-	<h3 class="outlined-text"><%= @group.link %></h3>
+	<h3 class="outlined-text" id="share-link"><%= @group.link %></h3>
+	<button class="btn btn-primary" onclick="copyToClipboard('share-link')">Copy Link</button>
 <% end %>
+</br>
 </br>
 <div>
 	<%= form_tag(controller: "user_selected_topics", action: "create", method: "post") %>
