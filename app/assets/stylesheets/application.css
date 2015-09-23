@@ -19,11 +19,15 @@ body{
  }
 
  html body {
-    background: url('Kraken.png') no-repeat center center fixed;
+    background: url('Kraken.png'), url('kraken-bg.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+#create-group-button {
+  margin-bottom: 5px;
 }
 
 .outlined-text {
@@ -52,7 +56,6 @@ body{
 }
 
 .currentSchedule {
-  margin-top: 5px;
   margin: 10px 0px;
 }
 
@@ -72,12 +75,13 @@ body{
   margin: 5px 0px;
 }
 
+
 .bord-rad-5 {
   border-radius: 5px;
 }
 
-.bg-white {
-  background: white;
+.bg-cs {
+  background: url(concrete_seamless.png);
 }
 
 .pad-5-25 {
@@ -86,4 +90,13 @@ body{
 
 .marg-l-25 {
   margin-left: 25px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.marg-lr {
+  margin-left: auto;
+  margin-right: auto;
 }
