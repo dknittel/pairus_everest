@@ -28,7 +28,7 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.5.1'
 
 # Add dotenv for secrets
-gem 'dotenv', '~> 2.0.2'
+gem 'dotenv-rails'
 
 # Shortening
 gem 'googl', '~> 0.7.1'

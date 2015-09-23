@@ -1,6 +1,6 @@
-<h2><%= @group.name %></h2>
+<h2 class="outlined-text"><%= @group.name %></h2>
 <% if current_user.id == @group.admin_id %>
-<h3>Invite Link: <%= @group.link %></h3>
+	<h3 class="outlined-text"><%= @group.link %></h3>
 <% end %>
 </br>
 <div>
@@ -9,8 +9,7 @@
 		<% @topics.each do |topic| %>
 		<tr>
 			<td><input type="checkbox" name="topic[<%= topic.id %>]" value="<%= topic.id %>"></td>
-			
-			<td><%= topic.title %></td>
+			<td class="outlined-text">&nbsp;<%= topic.title %>&nbsp;</td>
 			<% if current_user.id == @group.admin_id %>
 			<td>
 				&nbsp;
@@ -22,12 +21,9 @@
 		<% end %>
 	</table>
 	<input type="hidden" name="group" value="<%= @group.id %>">
-	<br>
-
-	<input type="submit" name="submit" value="Find Pairs" >
+	<input type="submit" name="submit" value="Find Pairs" class="btn btn-primary btn-marg-5" >
 	<br>
 </div>
-<div>
-	<br>
-	<%= link_to "Add New Topic", new_group_topic_path(@group.id) %>
-</div>
+	<div>
+		<%= link_to "Add New Topic", new_group_topic_path(@group.id), class: "btn btn-primary btn-marg-5" %>
+	</div>

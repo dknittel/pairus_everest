@@ -1,6 +1,7 @@
-class LoginController < ApplicationController
+class Login < ApplicationController
 
   def login
+    p params
     sign_in(:user, User.find(params[:id]))
     render json: response
   end
