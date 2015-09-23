@@ -1,11 +1,13 @@
-<%= form_for @group do |f|%>
+<div class="trans85 bord-rad-5 bg-cs pad-5-25 wid-55 marg-lr center">
+  <%= form_for @group do |f|%>
 
-  <div>
-    <%= f.label :name, class: "outlined-text" %><br />
-    <%= f.text_field :name, :autofocus=>true %>
-  </div>
+    <div>
+      <%= f.label :name, class: "outlined-text" %><br />
+      <%= f.text_field :name, :autofocus=>true %>
+    </div>
 
-  <div>
-    <%= f.submit "Create Group", class: "btn btn-primary btn-marg-5" %>
-  </div>
-<% end %>
+    <div>
+      <%= f.submit "Create Group", class: "btn btn-primary btn-marg-5" %>
+    </div>
+  <% end %>
+</div>
