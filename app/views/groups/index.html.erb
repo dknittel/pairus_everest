@@ -10,17 +10,15 @@
 	<p></p>
 <%= link_to 'Create New Group', new_group_path, class: "btn btn-primary" %>
 </div>
-
 <div class="currentSchedule trans85 bord-rad-5 bg-white">
 	<span class="title marg-l-25">Available Times:</span>
 	<ul>
 		<% current_user.hours.each do |day| %>
-		<li>
-			Date: <%= thedate(day).strftime("%a %b %d @ %l%P") %>
-			<%= link_to "Delete", hour_path(day), method: :delete, data: {confirm: 'Confirm Delete?'} %>
-		</li>
-		<% end %>
-	</ul>
+   <%= thedate(day).strftime("%a %b %d at %l%P") %>
+   <%= link_to "Delete", hour_path(day), method: :delete, data: {confirm: 'Confirm Delete?'} %>
+ </br>
+  <% end %>
+  </ul>
 </div>
 
 <div class="trans85 bord-rad-5 bg-white pad-5-25 center wid-55">

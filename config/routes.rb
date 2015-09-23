@@ -27,4 +27,10 @@ Rails.application.routes.draw do
       end
     end
   end
+
+resources :groups do
+  resources :topics
+  resources :availabilities
+  resources :potential_pairs
+end
 end

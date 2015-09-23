@@ -4,19 +4,21 @@
 <% end %>
 </br>
 <div>
-<%= form_tag(controller: "user_selected_topics", action: "create", method: "post") %>
+	<%= form_tag(controller: "user_selected_topics", action: "create", method: "post") %>
 	<table>
-			<% @topics.each do |topic| %>
+		<% @topics.each do |topic| %>
 		<tr>
 			<td><input type="checkbox" name="topic[<%= topic.id %>]" value="<%= topic.id %>"></td>
 			<td class="outlined-text">&nbsp;<%= topic.title %>&nbsp;</td>
 			<% if current_user.id == @group.admin_id %>
 			<td>
+				&nbsp;
+
 				<%= link_to "Delete Topic", group_topic_path(@group.id, topic.id), method: :delete, data: {confirm: 'Delete Topic?'} %>
 			</td>
 			<% end %>
 		</tr>
-	<% end %>
+		<% end %>
 	</table>
 	<input type="hidden" name="group" value="<%= @group.id %>">
 	<input type="submit" name="submit" value="Find Pairs" class="btn btn-primary btn-marg-5" >
