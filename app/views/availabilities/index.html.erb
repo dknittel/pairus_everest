@@ -2,28 +2,28 @@
 	<h4>There are no available pairs on these topics at this time.</h4>
 <% end %>
 <% @possible_availability_matches.each do |avail| %>
-	<table>
-		<tr>
-			<td>
+<table>
+	<tr>
+		<td>
 
-		Username: <%= user_helper(avail).handle %> -&nbsp;
-		Date: <%= avail_date(avail).strftime("%a %b %d @ %l%P") %> -
-		Topic: <%= topic_helper(avail).title %> &nbsp;
+			Username: <%= user_helper(avail).handle %> -&nbsp;
+			Date: <%= avail_date(avail).strftime("%a %b %d @ %l%P") %> -
+			Topic: <%= topic_helper(avail).title %> &nbsp;
 
-		&nbsp;
-			</td>
+			&nbsp;
+		</td>
 
-			<td>
-		<%= form_for :availability, :url => group_potential_pairs_path(@group, :user_id => user_helper(avail).id, :time => hour_helper(avail), :avail => avail.id, :accepted => true), :html => { :method => :post } do |f| %>
-		<%= f.submit "Select Pair" %>
-		<% end %>
-			</td>
-			<td>
-		<%= form_for :availability, :url => group_potential_pairs_path(@group,  :user_id => user_helper(avail).id, :time => hour_helper(avail), :avail => avail.id, :accepted => false), :html => { :method => :post } do |f| %>
-		<%= f.submit "Skip" %>
-		<% end %>
-			</td>
-		</tr>
+		<td>
+			<%= form_for :availability, :url => group_potential_pairs_path(@group, :user_id => user_helper(avail).id, :time => hour_helper(avail), :avail => avail.id, :accepted => true), :html => { :method => :post } do |f| %>
+			<%= f.submit "Select Pair" %>
+			<% end %>
+		</td>
+		<td>
+			<%= form_for :availability, :url => group_potential_pairs_path(@group,  :user_id => user_helper(avail).id, :time => hour_helper(avail), :avail => avail.id, :accepted => false), :html => { :method => :post } do |f| %>
+			<%= f.submit "Skip" %>
+			<% end %>
+		</td>
+	</tr>
 
-<% end %>
+	<% end %>
 </table>
