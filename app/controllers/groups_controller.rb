@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
 
     # make the current user the groups admin
     group.admin_id = current_user.id
-
+    
     # save the group
     if group.save
 
