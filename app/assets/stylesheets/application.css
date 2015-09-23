@@ -68,6 +68,10 @@
   font-size: 1.5em;
 }
 
+.btn-marg-5 {
+  margin: 5px 0px;
+}
+
 #group-list {
   background: white;
   border-radius: 5px;
