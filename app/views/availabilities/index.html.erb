@@ -15,12 +15,12 @@
 
 		<td>
 			<%= form_for :availability, :url => group_potential_pairs_path(@group, :user_id => user_helper(avail).id, :time => hour_helper(avail), :avail => avail.id, :accepted => true), :html => { :method => :post } do |f| %>
-			<%= f.submit "Select Pair" %>
+			<%= f.submit "Select Pair", class: "btn btn-primary btn-marg-5"	 %>
 			<% end %>
 		</td>
 		<td>
 			<%= form_for :availability, :url => group_potential_pairs_path(@group,  :user_id => user_helper(avail).id, :time => hour_helper(avail), :avail => avail.id, :accepted => false), :html => { :method => :post } do |f| %>
-			<%= f.submit "Skip" %>
+			<%= f.submit "Skip", class: "btn btn-primary btn-marg-5" %>
 			<% end %>
 		</td>
 	</tr>

@@ -9,7 +9,6 @@ class UserSelectedTopicsController < ApplicationController
         user.user_selected_topics << UserSelectedTopic.create(user_id: user.id, topic_id: topic)
       end
       user.user_selected_topics.each do |ust|
-        p params[:topic].include?(ust.topic_id.to_s)
         if params[:topic].include?(ust.topic_id.to_s)
           ust.selected = true
           ust.save
