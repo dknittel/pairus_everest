@@ -1,7 +1,7 @@
 <div class="trans85 bord-rad-5 bg-cs pad-5-25 wid-55 marg-lr center">
   <h2 class="outlined-text"><b><%= @group.name %></b></h2>
   <% if current_user.id == @group.admin_id %>
-  	<h4 class="outlined-text" id="share-link"><b>Share Link:</b> <%= @group.link %></h4>
+  	<h4><b>Share Link:</b></h4><h4 class="outlined-text" id="share-link"><%= @group.link %></h4>
   	<button class="btn btn-primary" onclick="copyToClipboard('share-link')">Copy Link</button>
   <% end %>
   </br>
