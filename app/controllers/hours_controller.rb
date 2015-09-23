@@ -26,11 +26,6 @@ class HoursController < ApplicationController
       end
     end
       redirect_to root_path
-
-    # usts = current_user.user_selected_topics
-
-    # hours.each do |hour|
-    # end
   end
 
   def edit
