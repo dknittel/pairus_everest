@@ -1,13 +1,14 @@
-What topic(s) is/are your group interested?
+<span class="title outlined-text">What topic is your group interested?</span>
 
 <%= form_for [@group, @topic] do |f|%>
 
   <div>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %> 
+    <%= f.label :title, class: "outlined-text" %><br />
+    <%= f.text_field :title %>
   </div>
 
   <div>
     <%= f.submit "Create Topic" %>
   </div>
+
 <% end %>

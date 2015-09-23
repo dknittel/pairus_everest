@@ -21,8 +21,8 @@ class HoursController < ApplicationController
         end
 
       if current_user.groups.count > 1
-      @group = Group.find(user_group.group_id)
       user_group = UserGroup.find_by(user_id: current_user.id)
+      @group = Group.find(user_group.group_id)
       end
     end
       redirect_to root_path
