@@ -1,4 +1,4 @@
-<div class="trans85 bord-rad-5 bg-white pad-5-25">
+<div class="trans85 bord-rad-5 bg-cs pad-5-25">
 	<span class="title"> My Groups </span>
 	<p></p>
 	<% if @groups %>
@@ -10,7 +10,7 @@
 	<p></p>
 	<%= link_to 'Create New Group', new_group_path, class: "btn btn-primary" %>
 </div>
-<div class="currentSchedule trans85 bord-rad-5 bg-white">
+<div class="currentSchedule trans85 bord-rad-5 bg-cs">
 	<span class="title marg-l-25">Available Times:</span>
 	<ul>
 		<% current_user.hours.each do |day| %>
@@ -21,7 +21,7 @@
   </ul>
 </div>
 
-<div class="trans85 bord-rad-5 bg-white pad-5-25">
+<div class="trans85 bord-rad-5 bg-cs pad-5-25">
   <%= form_for :hour, :url => hours_path  do |f| %>
   <%= f.submit "Create Schedule", class: "btn btn-primary" %>
   </br>
