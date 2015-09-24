@@ -35,6 +35,8 @@ gem 'googl', '~> 0.7.1'
 
 gem 'thin'
 
+gem 'rails_12factor', group: :production
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -45,7 +47,7 @@ gem 'thin'
 # gem 'capistrano-rails', group: :development
 
 group :development do
-  gem 'thin'
+  
 end
 
 group :development, :test do
