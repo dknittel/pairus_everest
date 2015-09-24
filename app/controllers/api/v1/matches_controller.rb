@@ -83,5 +83,5 @@ class Api::V1::MatchesController < ApplicationController
     @current_user = current_user
 
   end
-  render json: @possible_availability_matches
+  # render json: @possible_availability_matches
 end
