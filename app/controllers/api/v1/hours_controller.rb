@@ -1,5 +1,11 @@
-class HoursController < ApplicationController
+class Api::V1::HoursController < Api::V1Controller
+
   before_action :authenticate_user!
+
+  def index
+    render json: current_user.hours
+  end
+
   def new
   end
 
@@ -35,12 +41,8 @@ class HoursController < ApplicationController
   end
 
   def destroy
-    if params[:clear] == "true"
-      current_user.hours.each {|hour| hour.destroy}
-    else
-      hour = Hour.find(params[:id])
-      hour.destroy
-    end
+    hour = Hour.find(params[:id])
+    hour.destroy
     redirect_to "/groups"
   end
 end
