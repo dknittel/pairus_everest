@@ -47,7 +47,7 @@ gem 'rails_12factor', group: :production
 # gem 'capistrano-rails', group: :development
 
 group :development do
-  
+  # removed thin
 end
 
 group :development, :test do
