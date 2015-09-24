@@ -12,10 +12,11 @@
 </div>
 <div class="currentSchedule trans85 bord-rad-5 bg-cs wid-55 marg-lr center">
 	<span class="title marg-l-25">Available Times:</span>
-	<%= current_user.hours.first %>
 	<ul>
-		<% current_user.hours.each do |day| %>
-			<% unless in_past?(day) %>
+		<% sorted_hours.each do |day| %>
+			<% if in_past?(day) %>
+				<% day.destroy %>
+			<% else %>
 	   		<%= thedate(day).strftime("%a %b %d at %l%P") %>
 	   		<%= link_to "Delete", hour_path(day), method: :delete, data: {confirm: 'Confirm Delete?'} %>
 	 			</br>
