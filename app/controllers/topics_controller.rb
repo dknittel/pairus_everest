@@ -12,8 +12,6 @@ class TopicsController < ApplicationController
   end
 
   def create
-    p '*' * 100
-    p params
     group = Group.find(params[:group_id])
     topic = group.topics.create(title: params[:topic][:title])
     if group.topics.length < 1 && topic.save

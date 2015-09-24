@@ -2,18 +2,13 @@ class UserSelectedTopicsController < ApplicationController
 
   def create
     user = current_user
-    p params
     group = Group.find(params[:group])
     if params[:topic]
       topics = params[:topic].keys
       topics.each do |topic|
         user.user_selected_topics << UserSelectedTopic.create(user_id: user.id, topic_id: topic)
       end
-      p '9' * 100
-      p params[:topic]
       user.user_selected_topics.each do |ust|
-        p '9' * 100
-        p params[:topic].include?(ust.topic_id.to_s)
         if params[:topic].include?(ust.topic_id.to_s)
           ust.selected = true
           ust.save
@@ -22,16 +17,6 @@ class UserSelectedTopicsController < ApplicationController
           ust.save
         end
       end
-      # user.user_selected_topics.each do |ust|
-      #   ust.availabilities.each do |avail|
-      #     # avail.each do |a|
-      #     avail.destroy
-      #     p '*' * 100
-      #     p avail
-      #     # end
-      #     # avail.destroy
-      #   end
-      # end
 
       user.user_selected_topics.each do |ust|
         user.hours.each do |hour|

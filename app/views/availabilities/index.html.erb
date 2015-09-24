@@ -1,26 +1,31 @@
-<% @possible_availability_matches.each do |avail| %>
-	<table>
+<div class="trans85 bord-rad-5 bg-cs pad-5-25 wid-55 marg-lr center">
+	<% if @no_matches %>
+		<h4 class="outlined-text">There are no available pairs on these topics at this time.</h4>
+	<% end %>
+	<% @possible_availability_matches.each do |avail| %>
+	<table class="center marg-lr">
 		<tr>
 			<td>
 
-		Username: <%= user_helper(avail).handle %> -&nbsp;
-		Date: <%= avail_date(avail).strftime("%a %b %d @ %l%P") %> -
-		Topic: <%= topic_helper(avail).title %> &nbsp;
+				<b class="strong">Username: </b><%= user_helper(avail).handle %> <b>-</b>&nbsp;
+				<b class="strong">Date: </b><%= avail_date(avail).strftime("%a %b %d @ %l%P") %> <b>-</b>
+				<b class="strong">Topic: </b><%= topic_helper(avail).title %> &nbsp;
 
-		&nbsp;
+				&nbsp;
 			</td>
 
 			<td>
-		<%= form_for :availability, :url => group_potential_pairs_path(@group, :user_id => user_helper(avail).id, :time => hour_helper(avail), :avail => avail.id, :accepted => true), :html => { :method => :post } do |f| %>
-		<%= f.submit "Select Pair" %>
-		<% end %>
+				<%= form_for :availability, :url => group_potential_pairs_path(@group, :user_id => user_helper(avail).id, :time => hour_helper(avail), :avail => avail.id, :accepted => true), :html => { :method => :post } do |f| %>
+				<%= f.submit "Select Pair", class: "btn btn-primary btn-marg-5"	 %>
+				<% end %>
 			</td>
 			<td>
-		<%= form_for :availability, :url => group_potential_pairs_path(@group,  :user_id => user_helper(avail).id, :time => hour_helper(avail), :avail => avail.id, :accepted => false), :html => { :method => :post } do |f| %>
-		<%= f.submit "Skip" %>
-		<% end %>
+				<%= form_for :availability, :url => group_potential_pairs_path(@group,  :user_id => user_helper(avail).id, :time => hour_helper(avail), :avail => avail.id, :accepted => false), :html => { :method => :post } do |f| %>
+				<%= f.submit "Skip", class: "btn btn-primary btn-marg-5" %>
+				<% end %>
 			</td>
 		</tr>
 
-<% end %>
-</table>
+		<% end %>
+	</table>
+</div>
