@@ -1,4 +1,10 @@
-class Api::V1::TopicsController < ApplicationController
+class Api::V1::TopicsController < Api::V1Controller
+
+  def index
+    @group = Group.find(params[:id])
+    @topics = @group.topics
+    render json: @topics
+  end
 
   def create
     group = Group.find(params[:group_id])

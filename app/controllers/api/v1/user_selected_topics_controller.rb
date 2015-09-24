@@ -1,4 +1,4 @@
-class Api::V1::UserSelectedTopicsController < ApplicationController
+class Api::V1::UserSelectedTopicsController < Api::V1Controller
 
   def index
     user = User.find(params[:id])
