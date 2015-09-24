@@ -17,9 +17,11 @@
 			<% if in_past?(day) %>
 				<% day.destroy %>
 			<% else %>
+			<div id="hour_<%= day.id %>">
 	   		<%= thedate(day).strftime("%a %b %d at %l%P") %>
-	   		<%= link_to "Delete", hour_path(day), method: :delete, data: {confirm: 'Confirm Delete?'} %>
+	   		<%= link_to "Delete", hour_path(day), remote: true, id: "delete-hour-button", class: "btn btn-primary btn-xs btn-xs-marg", method: :delete, data: {confirm: 'Confirm Delete?'} %>
 	 			</br>
+			</div>
 			<% end %>
   	<% end %>
   </ul>

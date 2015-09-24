@@ -55,6 +55,12 @@ body{
 	opacity: 0.85;
 }
 
+.trans95  {
+  zoom: 1;
+  filter: alpha(opacity=95);
+  opacity: 0.95;
+}
+
 .currentSchedule {
   margin: 10px 0px;
 }
@@ -77,6 +83,10 @@ body{
 
 .btn-marg-5 {
   margin: 5px 5px;
+}
+
+.btn-xs-marg {
+  margin: 3px;
 }
 
 .bord-rad-5 {
