@@ -33,6 +33,8 @@ gem 'dotenv-rails'
 # Shortening
 gem 'googl', '~> 0.7.1'
 
+gem 'thin'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
