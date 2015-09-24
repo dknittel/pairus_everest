@@ -12,11 +12,11 @@ ust = UserSelectedTopic.create!(user_id: '1', topic_id: '1')
 ust2 = UserSelectedTopic.create!(user_id: '2', topic_id: '1')
 
 if ust.save
-	hour1 = user.hours.create!(hr: 1, day: 1, month:9)
+	hour1 = user.hours.create!(hr: 1, day: 30, month:9)
 	avail = ust.availabilities.create!(hour_id: hour1.id)
 
 end
 if ust2.save
-	hour2 = user2.hours.create!(hr: 1, day: 1, month:9)
+	hour2 = user2.hours.create!(hr: 1, day: 30, month:9)
 	avail2 = ust2.availabilities.create!(hour_id: hour2.id)
 end
