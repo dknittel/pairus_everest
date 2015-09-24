@@ -30,6 +30,10 @@ body{
   margin-bottom: 5px;
 }
 
+#clear-schedule-button {
+  margin-bottom: 5px;
+}
+
 .outlined-text {
   color: black;
   text-shadow:
@@ -82,7 +86,7 @@ body{
 }
 
 .btn-marg-5 {
-  margin: 5px 5px;
+  margin: 5px;
 }
 
 .btn-xs-marg {

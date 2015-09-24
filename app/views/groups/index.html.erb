@@ -19,12 +19,13 @@
 			<% else %>
 			<div id="hour_<%= day.id %>">
 	   		<%= thedate(day).strftime("%a %b %d at %l%P") %>
-	   		<%= link_to "Delete", hour_path(day), remote: true, id: "delete-hour-button", class: "btn btn-primary btn-xs btn-xs-marg", method: :delete, data: {confirm: 'Confirm Delete?'} %>
+	   		<%= link_to "Delete", hour_path(day), id: "delete-hour-button", class: "btn btn-primary btn-xs btn-xs-marg", method: :delete, data: {confirm: 'Confirm Delete?'} %>
 	 			</br>
 			</div>
 			<% end %>
   	<% end %>
   </ul>
+	<%= link_to "Clear Schedule", hour_path(current_user, clear: true), class: "btn btn-primary btn-xs btn-xs-marg", id: "clear-schedule-button", method: :delete, data: {confirm: 'Clear Schedule?'} %>
 </div>
 
 <div class="trans85 bord-rad-5 bg-cs pad-5-25 wid-55 marg-lr">
