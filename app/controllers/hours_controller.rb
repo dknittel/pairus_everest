@@ -35,8 +35,12 @@ class HoursController < ApplicationController
   end
 
   def destroy
-    hour = Hour.find(params[:id])
-    hour.destroy
+    if params[:clear] == "true"
+      current_user.hours.each {|hour| hour.destroy}
+    else
+      hour = Hour.find(params[:id])
+      hour.destroy
+    end
     redirect_to "/groups"
   end
 end
