@@ -1,14 +1,16 @@
-<span class="title outlined-text">What topic is your group interested?</span>
+<div class="trans85 bord-rad-5 bg-cs pad-5-25 wid-55 marg-lr center">
+  <span class="title outlined-text">What topic is your group interested?</span>
 
-<%= form_for [@group, @topic] do |f|%>
+  <%= form_for [@group, @topic] do |f|%>
 
-  <div>
-    <%= f.label :title, class: "outlined-text" %><br />
-    <%= f.text_field :title %>
-  </div>
+    <div>
+      <%= f.label :title, class: "outlined-text" %><br />
+      <%= f.text_field :title, :autofocus=>true %>
+    </div>
 
-  <div>
-    <%= f.submit "Create Topic" %>
-  </div>
+    <div>
+      <%= f.submit "Create Topic", class: "btn btn-primary btn-marg-5" %>
+    </div>
 
-<% end %>
+  <% end %>
+</div>

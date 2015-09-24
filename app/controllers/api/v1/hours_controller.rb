@@ -1,5 +1,11 @@
-class HoursController < ApplicationController
+class Api::V1::HoursController < Api::V1Controller
+
   before_action :authenticate_user!
+
+  def index
+    render json: current_user.hours
+  end
+
   def new
   end
 

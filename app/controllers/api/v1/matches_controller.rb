@@ -1,4 +1,4 @@
-class Api::V1::MatchesController < ApplicationController
+class Api::V1::MatchesController < Api::V1Controller
 
   def index
 
