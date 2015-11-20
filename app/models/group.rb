@@ -11,7 +11,7 @@ class Group < ActiveRecord::Base
 
 	private
 	def shorten_url
-		url = Googl.shorten("http://localhost:3000/?group=#{self.id}", '213.57.23.49', ENV['GOOGLE_API_TOKEN'])
+		url = Googl.shorten("http://pairus-app.herokuapp.com/?group=#{self.id}", '213.57.23.49', ENV['GOOGLE_API_TOKEN'])
 		short_url = url.short_url
 		self.link = short_url
 	end
